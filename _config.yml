@@ -1,28 +1,19 @@
 # Jekyll-Konfiguration für GitHub Pages
-# Wird automatisch von github.io angewendet
+# Custom Layout — kein Theme, eigenes _layouts/page.html mit Sunly-Branding
 
 title: Sunly · Rechtliche Hinweise
 description: Datenschutzerklärung, Nutzungsbedingungen und Impressum für die App Sunly
-theme: minima
 lang: de
 
-# Markdown-Engine — kommonmark ist GitHub-kompatibel
+# Markdown-Engine
 markdown: kramdown
 kramdown:
   input: GFM
   hard_wrap: false
 
-# SEO
-url: ""
-baseurl: ""
-
-# Default front matter for all pages
+# Default front matter
 defaults:
   - scope:
       path: ""
     values:
       layout: page
-
-# Falls du später Plugins willst (Sitemap etc.)
-plugins:
-  - jekyll-seo-tag
