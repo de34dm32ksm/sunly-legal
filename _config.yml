@@ -1,0 +1,28 @@
+# Jekyll-Konfiguration für GitHub Pages
+# Wird automatisch von github.io angewendet
+
+title: Sunly · Rechtliche Hinweise
+description: Datenschutzerklärung, Nutzungsbedingungen und Impressum für die App Sunly
+theme: minima
+lang: de
+
+# Markdown-Engine — kommonmark ist GitHub-kompatibel
+markdown: kramdown
+kramdown:
+  input: GFM
+  hard_wrap: false
+
+# SEO
+url: ""
+baseurl: ""
+
+# Default front matter for all pages
+defaults:
+  - scope:
+      path: ""
+    values:
+      layout: page
+
+# Falls du später Plugins willst (Sitemap etc.)
+plugins:
+  - jekyll-seo-tag
