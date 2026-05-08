@@ -40,12 +40,19 @@ Sunly is designed as a **data-minimal, locally operating app**. There is:
 
 - ❌ **No cloud account and no server-side user database** at Sunly
 - ❌ **No login, no registration, no email collection** on our side
-- ❌ **No tracking**, no advertising IDs, no analytics (Google Analytics, Firebase Analytics, AppsFlyer, etc.)
+- ❌ **No marketing/behavioral tracking, no advertising IDs**, no classic analytics tools (Google Analytics, Firebase Analytics, AppsFlyer, etc.)
 - ✅ Profile, sessions, photos and settings are stored **exclusively locally** on your device (Android `localStorage` + filesystem)
 
 When you uninstall the App, all locally stored data is completely removed.
 
-Despite this architecture, three specific functions involve data flows to external processors. These are transparently described in the following sections.
+**What does leave your device (full transparency, nothing hidden):**
+
+- ⚠️ **Anonymous crash reports** for bug fixing, sent to Sentry (Frankfurt) — switchable off in *Profile → Crash reports*. Details: Section 4.3.
+- ⚠️ **GPS coordinates** to Open-Meteo (Switzerland) for UV / weather data, without any user identifier. Details: Section 4.4.
+- ⚠️ **Optional: selfie photo** to Google Vertex AI (Frankfurt, via Cloudflare edge) — only when you actively start the AI scan. Details: Section 4.1.
+- ⚠️ **Technical connection metadata** (IP, user agent, ASN) on Vertex-AI calls through the Cloudflare edge for abuse prevention (kept max. 30 days). Details: Section 4.2.
+
+All four are documented in detail in Sections 4.1-4.4 with sub-processor, processing region, retention period and legal basis.
 
 ---
 
