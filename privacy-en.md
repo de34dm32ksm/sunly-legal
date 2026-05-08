@@ -5,7 +5,7 @@ layout: page
 
 # Privacy Policy — Sunly
 
-**Last updated:** May 8, 2026 · **Version:** 1.3
+**Last updated:** May 8, 2026 · **Version:** 1.4
 
 > **Note:** This is the English translation of the German privacy policy. In the event of any conflict or inconsistency, the German version (`Sunly_Datenschutzerklaerung_DE.md`) prevails.
 
@@ -92,11 +92,30 @@ Data processing agreements pursuant to Art. 28 GDPR are in place with all sub-pr
 
 **Purpose of processing:** AI-supported estimation of your skin type (Fitzpatrick I–VI), skin tone and eye color based on a selfie photo. The result is used exclusively to personalize your individual tanning plan (recommended sun exposure time per side, sun protection factor, optimal tanning window).
 
+**How the data is used:**
+
+The selfie image is used solely to:
+
+- Analyze visible skin characteristics (such as tone, redness, tan lines, eye color)
+- Generate personalized tanning and sun-protection recommendations within the app
+
+**The image is NOT used for:**
+
+- Facial recognition or biometric identification
+- User re-identification across sessions
+- Advertising, marketing, or profiling outside of tanning personalization
+- Resale, rental, or commercial exploitation of the image data
+- AI model training (contractually excluded under Google Cloud DPA)
+
 **Data transmitted:** Selfie photo (JPEG, base64-encoded), a text prompt provided by the Controller, and the app language (`de` or `en`, so the AI returns its reasoning in the right language). **No** further profile data (skin type, eye color, etc.), location data or persistent device IDs are transmitted.
 
 **Processing region:** `europe-west3` (Frankfurt am Main, Germany). The data does not leave the European Union.
 
-**Retention period at the processor:** The photo is processed solely for the duration of the inference and is **not stored**. Use for training the underlying AI models is excluded under the Google Cloud Data Processing Addendum (DPA).
+**Storage and retention:**
+
+- **At Vertex AI Frankfurt:** The photo is processed solely for the duration of the inference (typically < 5 seconds) and is **not stored**. Use for training the underlying AI models is excluded under the Google Cloud Data Processing Addendum (DPA).
+- **At Sunly:** Sunly does not operate any servers on which photo or analysis data could be retained. Only the analysis result (skin type, skin tone, eye color as plain-text values) is stored locally on your device.
+- **Locally on your device:** You can delete analysis results at any time via *Profile → Reset data* — all values and consent records will then be removed.
 
 **Legal basis:** Art. 6(1)(a) GDPR (consent), supplemented by Art. 9(2)(a) GDPR (explicit consent) where applicable.
 
@@ -337,7 +356,12 @@ We implement the following technical and organizational measures:
 
 ## 14. Currency and Modification of this Privacy Policy
 
-This Privacy Policy is currently effective in the version stated above (last updated: May 8, 2026, version 1.3). Further development of the App or legal changes may require modification. The current Privacy Policy can be viewed at any time in the Profile menu under "Privacy".
+This Privacy Policy is currently effective in the version stated above (last updated: May 8, 2026, version 1.4). Further development of the App or legal changes may require modification. The current Privacy Policy can be viewed at any time in the Profile menu under "Privacy".
+
+**Changes in v1.4 vs. v1.3 (May 8, 2026):**
+
+- Section 4.1 expanded with two additional sub-blocks following an approved-template format (Apple / Play Store): "How the data is used" (positive list: skin tone, redness, tan lines, eye color → personalized plan) and "The image is NOT used for" (negative list: facial recognition, re-identification, advertising, resale, model training).
+- Section 4.1 restructured "Storage and retention" as its own consolidated block covering three storage layers (Vertex AI / Sunly servers / locally on device) including explicit deletion instructions.
 
 **Changes in v1.3 vs. v1.2 (May 8, 2026):**
 

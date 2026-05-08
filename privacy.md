@@ -5,7 +5,7 @@ layout: page
 
 # Datenschutzerklärung — Sunly
 
-**Stand:** 8. Mai 2026 · **Version:** 1.3
+**Stand:** 8. Mai 2026 · **Version:** 1.4
 
 ---
 
@@ -90,11 +90,30 @@ Mit allen unten genannten Auftragsverarbeitern bestehen Verträge zur Auftragsve
 
 **Verarbeitungszweck:** KI-gestützte Einschätzung deines Hauttyps (Fitzpatrick I–VI), Hauttons und deiner Augenfarbe anhand eines Selfie-Fotos. Das Ergebnis dient ausschließlich der Personalisierung deines individuellen Bräunungsplans (empfohlene Sonnenzeit pro Seite, Lichtschutzfaktor, optimales Bräunungsfenster).
 
+**Wofür das Foto verwendet wird:**
+
+Das Selfie wird ausschließlich genutzt, um:
+
+- sichtbare Hautmerkmale zu analysieren (Hautton, Rötungen, Tan-Linien, Augenfarbe)
+- einen personalisierten Bräunungs- und Sonnenschutz-Plan in der App zu erstellen
+
+**Wofür das Foto NICHT verwendet wird:**
+
+- Gesichtserkennung oder biometrische Identifikation
+- Nutzer-Wiedererkennung über Sitzungen hinweg
+- Werbung, Marketing oder Profiling außerhalb der Bräunungs-Personalisierung
+- Weiterverkauf, Vermietung oder kommerzielle Verwertung der Bilddaten
+- KI-Modell-Training (vertraglich durch Google Cloud DPA ausgeschlossen)
+
 **Übermittelte Daten:** Selfie-Foto (JPEG, base64-kodiert), ein vom Verantwortlichen gestellter Text-Prompt sowie die App-Sprache (`de` oder `en`, damit die KI die Begründung in der richtigen Sprache liefert). Es werden **keine** weiteren Profildaten (Hauttyp, Augenfarbe etc.), Standortdaten oder persistenten Geräte-IDs übertragen.
 
 **Verarbeitungsregion:** `europe-west3` (Frankfurt am Main, Deutschland). Die Daten verlassen die Europäische Union nicht.
 
-**Speicherdauer beim Auftragsverarbeiter:** Das Foto wird ausschließlich für die Dauer der Inferenz verarbeitet und **nicht gespeichert**. Eine Nutzung zum Training der zugrunde liegenden KI-Modelle ist gemäß Google Cloud Data Processing Addendum (DPA) ausgeschlossen.
+**Speicherung und Aufbewahrung:**
+
+- **Bei Vertex AI Frankfurt:** Das Foto wird ausschließlich für die Dauer der Inferenz (typisch < 5 Sekunden) verarbeitet und **nicht gespeichert**. Eine Nutzung zum Training der zugrunde liegenden KI-Modelle ist gemäß Google Cloud Data Processing Addendum (DPA) ausgeschlossen.
+- **Bei Sunly:** Sunly betreibt keine eigenen Server, auf denen Foto- oder Analyse-Daten landen könnten. Lediglich das Analyse-Ergebnis (Hauttyp, Hautton, Augenfarbe als Klartext-Werte) wird auf deinem Gerät lokal gespeichert.
+- **Lokal auf deinem Gerät:** Du kannst Analyse-Ergebnisse jederzeit über *Profil → Daten zurücksetzen* löschen — alle Werte und Einwilligungs-Records werden dann entfernt.
 
 **Rechtsgrundlage:** Art. 6 Abs. 1 lit. a DSGVO i. V. m. Art. 9 Abs. 2 lit. a DSGVO (ausdrückliche Einwilligung).
 
@@ -335,7 +354,12 @@ Wir treffen folgende technische und organisatorische Maßnahmen:
 
 ## 14. Aktualität und Änderung dieser Datenschutzerklärung
 
-Diese Datenschutzerklärung ist aktuell gültig in der oben genannten Version (Stand: 8. Mai 2026, Version 1.3). Durch die Weiterentwicklung der App oder rechtliche Änderungen kann eine Anpassung erforderlich werden. Die jeweils aktuelle Datenschutzerklärung kann jederzeit im Profil-Menü unter „Datenschutz" eingesehen werden.
+Diese Datenschutzerklärung ist aktuell gültig in der oben genannten Version (Stand: 8. Mai 2026, Version 1.4). Durch die Weiterentwicklung der App oder rechtliche Änderungen kann eine Anpassung erforderlich werden. Die jeweils aktuelle Datenschutzerklärung kann jederzeit im Profil-Menü unter „Datenschutz" eingesehen werden.
+
+**Änderungen in v1.4 gegenüber v1.3 (8. Mai 2026):**
+
+- Abschnitt 4.1 ergänzt um zwei zusätzliche Sub-Blöcke nach approved-template-Format (Apple/Play Store): „Wofür das Foto verwendet wird" (positive Liste: Hautton, Rötungen, Tan-Linien, Augenfarbe → personalisierter Plan) und „Wofür das Foto NICHT verwendet wird" (negative Liste: Gesichtserkennung, Wiedererkennung, Werbung, Weiterverkauf, Modell-Training).
+- Abschnitt 4.1 strukturiert „Speicherung und Aufbewahrung" als eigenen konsolidierten Block mit drei Speicher-Layern (Vertex AI / Sunly-Server / Lokal auf Gerät) inkl. expliziter Lösch-Anweisung.
 
 **Änderungen in v1.3 gegenüber v1.2 (8. Mai 2026):**
 
