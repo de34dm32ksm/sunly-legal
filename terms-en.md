@@ -5,7 +5,7 @@ layout: page
 
 # Terms of Service — Sunly
 
-**Last updated:** May 8, 2026 · **Version:** 1.1
+**Last updated:** May 8, 2026 · **Version:** 1.2
 
 > The German version of these Terms (`Sunly_Nutzungsbedingungen_DE.md`) prevails in the event of any inconsistency.
 
@@ -77,6 +77,32 @@ To the extent permitted by law, the provider's liability for damages arising fro
 - Intent and gross negligence
 - Damage to life, body or health
 - Claims under the German Product Liability Act (`ProdHaftG`)
+
+### 4.7 Technical Requirements and Connectivity Responsibility
+Certain functions of the App require an active internet connection (e.g. UV data retrieval, AI skin-type scan, crash reports). The provider is not responsible if the App fails to deliver full functionality without sufficient Wi-Fi or mobile-network coverage.
+
+If you use the App outside of a Wi-Fi network, your contract with your mobile network provider continues to apply. You may be charged data fees and, where applicable, roaming charges by your mobile provider. By using the App you accept responsibility for such charges — including roaming charges abroad if data roaming is enabled.
+
+If you are not the contract holder for the device on which the App runs, we assume that you have received permission from the contract holder to use the App.
+
+The App is continually developed further; system requirements (minimum Android version, permissions) may change. Updates should be installed to keep using the App. The provider does not promise that the App will remain compatible with every Android version at all times.
+
+### 4.8 Device Security and Condition
+You are responsible for the security and operating condition of your device. In particular:
+
+- **No jailbreak / rooting:** We strongly recommend not to root or modify your device. Such interventions can disable security mechanisms and may cause the App to malfunction.
+- **Battery level:** If your device runs out of power during an active tanning session (empty battery), the provider cannot accept any responsibility — timer notifications will no longer fire.
+- **Device protection:** Keep your operating system up to date and protect your device against unauthorized access (screen lock, biometric protection).
+
+### 4.9 Free of Charge (No Hidden Costs)
+Sunly is and remains **free** to use. There are:
+
+- **No in-app purchases** (no premium tiers, no paid feature unlocks)
+- **No advertising** in the App
+- **No subscription models**
+- **No hidden fees or after-the-fact paywalls**
+
+If anything about this character were to change, the provider will clearly communicate it before any activation — you would never be charged without first being clearly informed and asked for active consent.
 
 ---
 

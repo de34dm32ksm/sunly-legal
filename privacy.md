@@ -5,7 +5,7 @@ layout: page
 
 # Datenschutzerklärung — Sunly
 
-**Stand:** 8. Mai 2026 · **Version:** 1.4
+**Stand:** 8. Mai 2026 · **Version:** 1.5
 
 ---
 
@@ -354,7 +354,12 @@ Wir treffen folgende technische und organisatorische Maßnahmen:
 
 ## 14. Aktualität und Änderung dieser Datenschutzerklärung
 
-Diese Datenschutzerklärung ist aktuell gültig in der oben genannten Version (Stand: 8. Mai 2026, Version 1.4). Durch die Weiterentwicklung der App oder rechtliche Änderungen kann eine Anpassung erforderlich werden. Die jeweils aktuelle Datenschutzerklärung kann jederzeit im Profil-Menü unter „Datenschutz" eingesehen werden.
+Diese Datenschutzerklärung ist aktuell gültig in der oben genannten Version (Stand: 8. Mai 2026, Version 1.5). Durch die Weiterentwicklung der App oder rechtliche Änderungen kann eine Anpassung erforderlich werden. Die jeweils aktuelle Datenschutzerklärung kann jederzeit im Profil-Menü unter „Datenschutz" eingesehen werden.
+
+**Änderungen in v1.5 gegenüber v1.4 (8. Mai 2026):**
+
+- Neuer Abschnitt 15 „Links zu Drittseiten" mit klarer Haftungs-Abgrenzung für externe Verlinkungen.
+- Neuer Abschnitt 16 „Datenschutz für Minderjährige (Kinder-Datenschutz)" mit ausdrücklicher 16+-Bestätigung, expliziter Nicht-Sammlung-von-Kinderdaten-Zusage und Eltern-Kontakt-Pfad. Format orientiert an Apple/Google-Play-Erwartungen für Kinderschutz-Disclaimer.
 
 **Änderungen in v1.4 gegenüber v1.3 (8. Mai 2026):**
 
@@ -373,6 +378,30 @@ Diese Datenschutzerklärung ist aktuell gültig in der oben genannten Version (S
 - Neuer Abschnitt 4.5 (Web-Fonts: Google Fonts + Fontshare).
 - Neuer Abschnitt 4.6 (OpenStreetMap-Reverse-Geocoding).
 - Abschnitt 13 präzisiert: Differenzierung Service-Account-Key (Worker-Secret) vs. Worker-Shared-Key (Soft-Schutz im Bundle).
+
+---
+
+## 15. Links zu Drittseiten
+
+Diese Datenschutzerklärung sowie einzelne In-App-Bereiche (z. B. die App-Information, Vertragsdokumenten-Verlinkungen) können Verweise zu externen Webseiten enthalten — u. a. zu den Datenschutz-Erklärungen von Google Cloud, Cloudflare, Sentry, Open-Meteo, Fontshare und der OpenStreetMap Foundation.
+
+Diese externen Seiten werden **nicht vom Anbieter betrieben**. Der Anbieter hat keinen Einfluss auf deren Inhalte, Verfügbarkeit und Datenschutz-Praktiken. Wir empfehlen ausdrücklich, die jeweiligen Datenschutz-Erklärungen der verlinkten Drittseiten vor deren Nutzung zu lesen.
+
+Eine Haftung für die Inhalte verlinkter Drittseiten wird im gesetzlich zulässigen Rahmen ausgeschlossen.
+
+---
+
+## 16. Datenschutz für Minderjährige (Kinder-Datenschutz)
+
+Sunly richtet sich ausschließlich an Personen ab **16 Jahren**. Die App ist nicht für die Nutzung durch Kinder unter 16 bestimmt:
+
+- Im KI-Hauttyp-Scan-Pfad bestätigt der Nutzer aktiv das Mindestalter über den Einwilligungs-Modal (siehe Abschnitt 4.1).
+- Im Fragebogen-Pfad ist die Volljährigkeit Bestandteil der akzeptierten Nutzungsbedingungen (Abschnitt 7 der Nutzungsbedingungen).
+- Es gibt keine altersgerechten Inhalte oder Funktionen, die gezielt Kinder ansprechen würden.
+
+**Wir sammeln nicht wissentlich personenbezogene Daten von Kindern unter 16 Jahren.** Sollten wir Kenntnis davon erlangen, dass solche Daten an einen unserer Auftragsverarbeiter (z. B. via KI-Scan-Foto) übermittelt wurden, werden wir die Verarbeitung bei dem betroffenen Auftragsverarbeiter unverzüglich anstoßen, alle entsprechenden Daten löschen zu lassen.
+
+**An Eltern oder Erziehungsberechtigte:** Falls du den begründeten Verdacht hast, dass dein Kind unter 16 die App genutzt und dabei personenbezogene Daten übermittelt hat, wende dich bitte umgehend an mail@mariusbecker.me. Wir werden den Sachverhalt unverzüglich prüfen und alle relevanten Daten bei den Auftragsverarbeitern löschen lassen.
 
 ---
 

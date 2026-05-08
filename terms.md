@@ -5,7 +5,7 @@ layout: page
 
 # Nutzungsbedingungen — Sunly
 
-**Stand:** 8. Mai 2026 · **Version:** 1.1
+**Stand:** 8. Mai 2026 · **Version:** 1.2
 
 ---
 
@@ -75,6 +75,32 @@ Soweit gesetzlich zulässig, ist die Haftung des Anbieters für Schäden aus der
 - Vorsatz und grober Fahrlässigkeit
 - Schäden aus der Verletzung von Leben, Körper oder Gesundheit
 - Ansprüchen nach dem Produkthaftungsgesetz
+
+### 4.7 Technische Voraussetzungen und Verbindungs-Verantwortung
+Bestimmte Funktionen der App benötigen eine aktive Internet-Verbindung (z. B. UV-Daten-Abruf, KI-Hauttyp-Scan, Crash-Reports). Der Anbieter ist nicht dafür verantwortlich, dass die App ohne ausreichende WLAN- oder Mobilfunk-Verbindung den vollen Funktionsumfang liefert.
+
+Wenn du die App außerhalb eines WLAN-Netzes nutzt, bleibt der Vertrag mit deinem Mobilfunk-Anbieter gültig. Es können dadurch Daten- und ggf. Roaming-Gebühren bei deinem Mobilfunk-Anbieter anfallen. Mit der Nutzung der App akzeptierst du die Verantwortung für solche Gebühren — auch im Roaming-Fall im Ausland, falls Daten-Roaming aktiviert ist.
+
+Falls du nicht der Vertragspartner für das Gerät bist, auf dem die App läuft, gehen wir davon aus, dass du die Erlaubnis des Vertragspartners zur Nutzung erhalten hast.
+
+Die App wird laufend weiterentwickelt; eventuelle System-Voraussetzungen (Mindest-Android-Version, Berechtigungen) können sich ändern. Updates sollten installiert werden, um die App weiter nutzen zu können. Der Anbieter verspricht nicht, dass die App jederzeit mit jeder Android-Version kompatibel bleibt.
+
+### 4.8 Geräte-Sicherheit und -Zustand
+Du bist selbst verantwortlich für die Sicherheit und den Betriebszustand deines Geräts. Insbesondere:
+
+- **Kein Jailbreak / Root:** Wir empfehlen dringend, dein Gerät nicht zu rooten oder zu modifizieren. Solche Eingriffe können Sicherheits-Mechanismen aushebeln und dazu führen, dass die App nicht mehr korrekt funktioniert.
+- **Akku-Stand:** Wenn dein Gerät während einer aktiven Bräunungs-Session ausgeht (leerer Akku), kann der Anbieter dafür keine Verantwortung übernehmen — Timer-Benachrichtigungen werden dann nicht mehr ausgelöst.
+- **Geräte-Schutz:** Halte das Betriebssystem aktuell und schütze dein Gerät vor unbefugtem Zugriff (Bildschirm-Sperre, biometrische Sicherung).
+
+### 4.9 Kostenfreiheit (keine versteckten Kosten)
+Sunly ist und bleibt **kostenlos** verfügbar. Es gibt:
+
+- **Keine In-App-Käufe** (keine Premium-Tarife, keine Feature-Freischaltungen gegen Geld)
+- **Keine Werbung** in der App
+- **Keine Abonnement-Modelle**
+- **Keine versteckten Gebühren oder nachträglichen Bezahl-Schranken**
+
+Sollte sich an diesem Charakter etwas ändern, wird der Anbieter dies vor einer Aktivierung deutlich kommunizieren — niemals würde dir eine Zahlung in Rechnung gestellt, ohne dass du vorher klar darüber informiert und um aktive Zustimmung gebeten wurdest.
 
 ---
 

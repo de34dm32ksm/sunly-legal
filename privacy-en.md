@@ -5,7 +5,7 @@ layout: page
 
 # Privacy Policy — Sunly
 
-**Last updated:** May 8, 2026 · **Version:** 1.4
+**Last updated:** May 8, 2026 · **Version:** 1.5
 
 > **Note:** This is the English translation of the German privacy policy. In the event of any conflict or inconsistency, the German version (`Sunly_Datenschutzerklaerung_DE.md`) prevails.
 
@@ -356,7 +356,12 @@ We implement the following technical and organizational measures:
 
 ## 14. Currency and Modification of this Privacy Policy
 
-This Privacy Policy is currently effective in the version stated above (last updated: May 8, 2026, version 1.4). Further development of the App or legal changes may require modification. The current Privacy Policy can be viewed at any time in the Profile menu under "Privacy".
+This Privacy Policy is currently effective in the version stated above (last updated: May 8, 2026, version 1.5). Further development of the App or legal changes may require modification. The current Privacy Policy can be viewed at any time in the Profile menu under "Privacy".
+
+**Changes in v1.5 vs. v1.4 (May 8, 2026):**
+
+- New Section 15 "Links to Third-Party Sites" with a clear liability disclaimer for external links.
+- New Section 16 "Children's Privacy" with explicit 16+ confirmation, explicit no-collection-of-children's-data commitment, and a parental contact path. Format aligned with Apple / Google Play expectations for child-protection disclaimers.
 
 **Changes in v1.4 vs. v1.3 (May 8, 2026):**
 
@@ -375,6 +380,30 @@ This Privacy Policy is currently effective in the version stated above (last upd
 - New Section 4.5 (web fonts: Google Fonts + Fontshare).
 - New Section 4.6 (OpenStreetMap reverse geocoding).
 - Section 13 clarified: distinction between service-account key (worker secret) and worker-shared key (soft protection in bundle).
+
+---
+
+## 15. Links to Third-Party Sites
+
+This Privacy Policy and certain in-app areas (e.g. the App-Information screen, contract-document links) may contain references to external websites — including the privacy policies of Google Cloud, Cloudflare, Sentry, Open-Meteo, Fontshare and the OpenStreetMap Foundation.
+
+These external sites are **not operated by the provider**. The provider has no control over their content, availability or privacy practices. We strongly recommend reading the privacy policies of the linked third-party sites before using them.
+
+Liability for the content of linked third-party sites is excluded to the extent permitted by law.
+
+---
+
+## 16. Children's Privacy
+
+Sunly is intended exclusively for users aged **16 and over**. The App is not designed for use by children under 16:
+
+- On the AI skin-type scan path, the user actively confirms the minimum age via the consent modal (see Section 4.1).
+- On the questionnaire path, age of majority is part of the accepted Terms of Service (Section 7 of the Terms).
+- There are no age-appropriate contents or features specifically targeting children.
+
+**We do not knowingly collect personal information from children under the age of 16.** Should we become aware that such data has been transmitted to one of our sub-processors (e.g. via the AI-scan photo), we will promptly initiate deletion of all such data at the relevant sub-processor.
+
+**To parents or legal guardians:** If you have reasonable grounds to believe that your child under 16 has used the App and submitted personal information, please contact mail@mariusbecker.me without delay. We will review the matter immediately and arrange deletion of all relevant data at the sub-processors.
 
 ---
 
