@@ -5,7 +5,7 @@ layout: page
 
 # Datenschutzerklärung — Sunly
 
-**Stand:** 8. Mai 2026 · **Version:** 1.2
+**Stand:** 8. Mai 2026 · **Version:** 1.3
 
 ---
 
@@ -71,7 +71,24 @@ Mit allen unten genannten Auftragsverarbeitern bestehen Verträge zur Auftragsve
 
 **Anbieter:** Google Ireland Limited, Gordon House, Barrow Street, Dublin 4, Irland (Hauptsitz EU). Konzernmutter: Google LLC, USA.
 
-**Verarbeitungszweck:** KI-gestützte Einschätzung deines Hauttyps, Hauttons und deiner Augenfarbe anhand eines Selfie-Fotos. Das Ergebnis dient ausschließlich der Personalisierung deines individuellen Bräunungsplans (empfohlene Sonnenzeit pro Seite, Lichtschutzfaktor, optimales Bräunungsfenster).
+**Was verarbeitet wird — und was ausdrücklich NICHT:**
+
+*Verarbeitet werden:*
+
+- Ein vom Nutzer aktiv erstelltes Selfie (Gesichts-Foto, JPEG)
+- Optional: die im Onboarding gegebenen Antworten zur Hauttyp-Selbst­einschätzung (alternativer Pfad ohne Foto, falls der Nutzer den Scan ablehnt)
+
+*Was die App ausdrücklich NICHT tut:*
+
+- Es werden **keine biometrischen Identifikatoren** im Sinne von Art. 4 Nr. 14 DSGVO erstellt oder gespeichert
+- Es werden **keine Gesichtserkennungs-Templates / Face-Embeddings / FaceIDs** angelegt
+- Es findet **keine Identitäts-Verifikation** statt
+- Es wird **kein biometrischer Abgleich gegen eine Datenbank** durchgeführt
+- Das Foto wird **nicht zur Wiedererkennung** des Nutzers bei späteren Sitzungen verwendet
+- Das Foto wird **nicht zum KI-Modell-Training** weitergegeben (Google Cloud DPA)
+- Es werden **keine emotionalen, gesundheitlichen oder psychologischen Bewertungen** abgeleitet
+
+**Verarbeitungszweck:** KI-gestützte Einschätzung deines Hauttyps (Fitzpatrick I–VI), Hauttons und deiner Augenfarbe anhand eines Selfie-Fotos. Das Ergebnis dient ausschließlich der Personalisierung deines individuellen Bräunungsplans (empfohlene Sonnenzeit pro Seite, Lichtschutzfaktor, optimales Bräunungsfenster).
 
 **Übermittelte Daten:** Selfie-Foto (JPEG, base64-kodiert), ein vom Verantwortlichen gestellter Text-Prompt sowie die App-Sprache (`de` oder `en`, damit die KI die Begründung in der richtigen Sprache liefert). Es werden **keine** weiteren Profildaten (Hauttyp, Augenfarbe etc.), Standortdaten oder persistenten Geräte-IDs übertragen.
 
@@ -318,7 +335,11 @@ Wir treffen folgende technische und organisatorische Maßnahmen:
 
 ## 14. Aktualität und Änderung dieser Datenschutzerklärung
 
-Diese Datenschutzerklärung ist aktuell gültig in der oben genannten Version (Stand: 8. Mai 2026, Version 1.2). Durch die Weiterentwicklung der App oder rechtliche Änderungen kann eine Anpassung erforderlich werden. Die jeweils aktuelle Datenschutzerklärung kann jederzeit im Profil-Menü unter „Datenschutz" eingesehen werden.
+Diese Datenschutzerklärung ist aktuell gültig in der oben genannten Version (Stand: 8. Mai 2026, Version 1.3). Durch die Weiterentwicklung der App oder rechtliche Änderungen kann eine Anpassung erforderlich werden. Die jeweils aktuelle Datenschutzerklärung kann jederzeit im Profil-Menü unter „Datenschutz" eingesehen werden.
+
+**Änderungen in v1.3 gegenüber v1.2 (8. Mai 2026):**
+
+- Abschnitt 4.1 ergänzt um expliziten Block „Was verarbeitet wird — und was ausdrücklich NICHT": Zweck-Begrenzung der Foto-Analyse (kein biometrischer Identifikator, kein Face-Embedding, keine Identitäts-Verifikation, kein DB-Abgleich, keine Wiedererkennung, keine emotionale/gesundheitliche Bewertung). Format orientiert sich an Play-Store-Data-Safety- und Apple-App-Privacy-Anforderungen für transparente Scope-Begrenzung von Foto-/KI-Features.
 
 **Änderungen in v1.2 gegenüber v1.1 (8. Mai 2026):**
 

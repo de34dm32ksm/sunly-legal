@@ -5,7 +5,7 @@ layout: page
 
 # Privacy Policy — Sunly
 
-**Last updated:** May 8, 2026 · **Version:** 1.2
+**Last updated:** May 8, 2026 · **Version:** 1.3
 
 > **Note:** This is the English translation of the German privacy policy. In the event of any conflict or inconsistency, the German version (`Sunly_Datenschutzerklaerung_DE.md`) prevails.
 
@@ -73,7 +73,24 @@ Data processing agreements pursuant to Art. 28 GDPR are in place with all sub-pr
 
 **Provider:** Google Ireland Limited, Gordon House, Barrow Street, Dublin 4, Ireland (EU headquarters). Parent company: Google LLC, USA.
 
-**Purpose of processing:** AI-supported estimation of your skin type, skin tone and eye color based on a selfie photo. The result is used exclusively to personalize your individual tanning plan (recommended sun exposure time per side, sun protection factor, optimal tanning window).
+**What is processed — and what is explicitly NOT:**
+
+*What is processed:*
+
+- A user-captured facial image (selfie, JPEG) actively taken by the user
+- Optionally, the onboarding responses for skin-type self-assessment (alternative path without a photo, if the user declines the scan)
+
+*What the app explicitly does NOT do:*
+
+- The app does **not** collect or store **biometric identifiers** within the meaning of Art. 4(14) GDPR
+- The app does **not** create or store **facial-recognition templates / face embeddings / FaceIDs**
+- The app does **not** perform **identity verification**
+- The app does **not** match faces against any database
+- The photo is **not** used to re-identify the user across later sessions
+- The photo is **not** passed on for AI model training (Google Cloud DPA)
+- The app does **not** derive emotional, medical or psychological assessments
+
+**Purpose of processing:** AI-supported estimation of your skin type (Fitzpatrick I–VI), skin tone and eye color based on a selfie photo. The result is used exclusively to personalize your individual tanning plan (recommended sun exposure time per side, sun protection factor, optimal tanning window).
 
 **Data transmitted:** Selfie photo (JPEG, base64-encoded), a text prompt provided by the Controller, and the app language (`de` or `en`, so the AI returns its reasoning in the right language). **No** further profile data (skin type, eye color, etc.), location data or persistent device IDs are transmitted.
 
@@ -320,7 +337,11 @@ We implement the following technical and organizational measures:
 
 ## 14. Currency and Modification of this Privacy Policy
 
-This Privacy Policy is currently effective in the version stated above (last updated: May 8, 2026, version 1.2). Further development of the App or legal changes may require modification. The current Privacy Policy can be viewed at any time in the Profile menu under "Privacy".
+This Privacy Policy is currently effective in the version stated above (last updated: May 8, 2026, version 1.3). Further development of the App or legal changes may require modification. The current Privacy Policy can be viewed at any time in the Profile menu under "Privacy".
+
+**Changes in v1.3 vs. v1.2 (May 8, 2026):**
+
+- Section 4.1 expanded with an explicit block "What is processed — and what is explicitly NOT": scope limitation of the photo analysis (no biometric identifier, no face embedding, no identity verification, no database matching, no re-identification, no emotional/medical assessment). Format aligned with Play Store Data Safety and Apple App Privacy requirements for transparent scope limitation of photo/AI features.
 
 **Changes in v1.2 vs. v1.1 (May 8, 2026):**
 
