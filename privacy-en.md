@@ -1,11 +1,11 @@
-﻿---
+---
 title: Privacy Policy
 layout: page
 ---
 
 # Privacy Policy — Sunly
 
-**Last updated:** May 2, 2026 · **Version:** 1.0
+**Last updated:** May 8, 2026 · **Version:** 1.1
 
 > **Note:** This is the English translation of the German privacy policy. In the event of any conflict or inconsistency, the German version (`Sunly_Datenschutzerklaerung_DE.md`) prevails.
 
@@ -22,13 +22,13 @@ Germany
 
 Email: mail@mariusbecker.me
 
-Sunly is a **private, non-commercial hobby project**. There is no statutory obligation to appoint a Data Protection Officer (Art. 37 GDPR) as the relevant thresholds are not exceeded.
+Sunly is operated privately and on a non-commercial basis. There is no statutory obligation to appoint a Data Protection Officer (Art. 37 GDPR) as the relevant thresholds are not exceeded.
 
 ---
 
 ## 2. Scope
 
-This Privacy Policy applies to the **Sunly** mobile application (hereinafter "the App") for Android, published under the bundle identifier `com.mariusbecker.sunnysafe`. It informs users (hereinafter "you") about the nature, scope and purpose of the processing of personal data.
+This Privacy Policy applies to the **Sunly** mobile application (hereinafter "the App") for Android, published under the application ID `com.mariusbecker.sunly`. It informs users (hereinafter "you") about the nature, scope and purpose of the processing of personal data.
 
 The App is exclusively for wellness and lifestyle purposes (UV index tracking, tanning planning, vitamin D estimation). It is **not a medical device** within the meaning of Regulation (EU) 2017/745 (MDR) and does not replace any medical advice, diagnosis or treatment.
 
@@ -264,20 +264,8 @@ We implement the following technical and organizational measures:
 
 ## 14. Currency and Modification of this Privacy Policy
 
-This Privacy Policy is currently effective in the version stated above (last updated: May 2, 2026). Further development of the App or legal changes may require modification. The current Privacy Policy can be viewed at any time in the Profile menu under "Privacy".
+This Privacy Policy is currently effective in the version stated above (last updated: May 8, 2026). Further development of the App or legal changes may require modification. The current Privacy Policy can be viewed at any time in the Profile menu under "Privacy".
 
 ---
 
 **End of Privacy Policy**
-
----
-
-## Appendix: Notes for Legal Review (remove before publication)
-
-Before public launch, an attorney specializing in IT/data protection law should review the following points in particular:
-
-1. **Art. 9 GDPR**: Classification of photo processing (biometric?) — currently classified as "not for identification". Second opinion recommended.
-2. **Consent mechanism** for photo scan: Implementation as a tap action is customary, but an additional modal consent prompt may be required.
-3. **Wellness vs. medical device**: Current architecture (no `sunDamage`/`recoveryNeed` score, clear disclaimers) should reliably avoid MDR classification — confirmation advisable.
-4. **Standard Contractual Clauses** for Cloudflare and Google: Contractual documents are in place, verify formal coverage.
-5. **Supervisory authority**: LfDI NRW identified as competent (main establishment Plettenberg). Lead authority to be clarified for multiple establishments.

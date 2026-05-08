@@ -1,11 +1,11 @@
-﻿---
+---
 title: Nutzungsbedingungen
 layout: page
 ---
 
 # Nutzungsbedingungen — Sunly
 
-**Stand:** 2. Mai 2026 · **Version:** 1.0
+**Stand:** 8. Mai 2026 · **Version:** 1.1
 
 ---
 
@@ -24,7 +24,7 @@ Mit dem Herunterladen und der Nutzung der App akzeptierst du diese Nutzungsbedin
 
 ## 2. Charakter der App
 
-Sunly ist ein **privates, nicht-kommerzielles Hobby-Projekt** und wird kostenlos zur Verfügung gestellt. Die App dient ausschließlich **Wellness- und Lifestyle-Zwecken** und stellt **kein Medizinprodukt** im Sinne der Verordnung (EU) 2017/745 dar.
+Sunly ist eine **private, nicht-kommerziell betriebene App**, die kostenlos zur Verfügung gestellt wird. Sie dient ausschließlich **Wellness- und Lifestyle-Zwecken** und stellt **kein Medizinprodukt** im Sinne der Verordnung (EU) 2017/745 (MDR) dar.
 
 ---
 
@@ -48,15 +48,17 @@ Der Anbieter behält sich das Recht vor, Funktionen jederzeit zu erweitern, zu �
 ### 4.1 Keine medizinische Beratung
 Die App **ersetzt keinerlei ärztliche Beratung, Diagnose oder Behandlung**. Empfehlungen, UV-Hinweise, Bräunungsplan-Vorschläge und LSF-Empfehlungen sind allgemeine Wellness-Hilfsmittel und keine medizinische Anleitung.
 
-Bei Hautveränderungen, Muttermalen, Schmerzen, Hauterkrankungen, Schwangerschaft, Einnahme photosensibilisierender Medikamente oder anderen gesundheitlichen Fragen ist ausschließlich ein Arzt — bevorzugt ein Hautarzt — zu konsultieren.
+Bei gesundheitlichen Fragen oder in besonderen Lebenssituationen sprich mit einer medizinischen Fachperson, bevorzugt einer Hautärztin oder einem Hautarzt.
 
-### 4.2 Eigenverantwortung
-Die Nutzung der App und die Befolgung ihrer Empfehlungen erfolgt auf **eigenes Risiko**. Du bist selbst verantwortlich für:
+### 4.2 Eigenverantwortung und Grenzen der Personalisierung
+Die Nutzung der App und die Befolgung ihrer Empfehlungen erfolgt auf **eigenes Risiko**. Die App arbeitet mit einer begrenzten Auswahl an Eingabe­größen (Hauttyp, Wunsch-Bräune, Standort, UV-Vorhersage) und **kann individuelle Faktoren wie Tagesform, Medikamenten­einnahme, Hautempfindlichkeit, Reflexion durch Schnee, Wasser oder Sand sowie weitere Variablen nicht vollständig abbilden**.
+
+Du bist selbst verantwortlich für:
 
 - Die Beurteilung, ob die Empfehlungen für deine individuelle Situation angemessen sind
 - Den ausreichenden Sonnenschutz (Sonnencreme, Schutzkleidung, Schatten)
 - Die regelmäßige Selbstuntersuchung deiner Haut
-- Den Verzicht auf UV-Exposition bei Risikofaktoren
+- Den Verzicht auf UV-Exposition, wenn du dich unwohl fühlst oder Risikofaktoren vorliegen
 
 ### 4.3 Genauigkeit der Daten
 Die App nutzt externe Wetter- und UV-Daten (Open-Meteo). Diese Daten sind **Prognosen** und können von der tatsächlichen Situation abweichen. Der Anbieter übernimmt keine Gewähr für die Aktualität, Genauigkeit oder Vollständigkeit dieser Daten.

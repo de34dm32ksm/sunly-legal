@@ -1,11 +1,11 @@
-﻿---
+---
 title: Terms of Service
 layout: page
 ---
 
 # Terms of Service — Sunly
 
-**Last updated:** May 2, 2026 · **Version:** 1.0
+**Last updated:** May 8, 2026 · **Version:** 1.1
 
 > The German version of these Terms (`Sunly_Nutzungsbedingungen_DE.md`) prevails in the event of any inconsistency.
 
@@ -26,7 +26,7 @@ By downloading and using the App, you accept these Terms. If you disagree, pleas
 
 ## 2. Nature of the App
 
-Sunly is a **private, non-commercial hobby project** provided free of charge. The App serves **wellness and lifestyle purposes only** and is **not a medical device** within the meaning of Regulation (EU) 2017/745 (MDR).
+Sunly is a **private, non-commercially operated app** provided free of charge. The App serves **wellness and lifestyle purposes only** and is **not a medical device** within the meaning of Regulation (EU) 2017/745 (MDR).
 
 ---
 
@@ -50,15 +50,17 @@ The provider reserves the right to extend, modify or discontinue features at any
 ### 4.1 Not Medical Advice
 The App **does not replace medical advice, diagnosis or treatment**. Recommendations, UV alerts, tanning plan suggestions and SPF guidance are general wellness aids and not medical instructions.
 
-For skin changes, moles, pain, skin conditions, pregnancy, photosensitizing medication or any health concern, consult a physician — preferably a dermatologist.
+For any health concerns or special life situations, consult a medical professional — preferably a dermatologist.
 
-### 4.2 Personal Responsibility
-Use of the App and its recommendations is **at your own risk**. You are responsible for:
+### 4.2 Personal Responsibility and Limits of Personalization
+Use of the App and its recommendations is **at your own risk**. The App works with a limited set of inputs (skin type, target tan, location, UV forecast) and **cannot fully account for individual factors such as how you feel on a given day, medication, skin sensitivity, reflection from snow, water or sand, and other variables**.
+
+You are responsible for:
 
 - Judging whether the recommendations are appropriate for your individual situation
 - Adequate sun protection (sunscreen, protective clothing, shade)
 - Regular self-examination of your skin
-- Avoiding UV exposure when risk factors apply
+- Avoiding UV exposure when you feel unwell or risk factors apply
 
 ### 4.3 Data Accuracy
 The App uses external weather and UV data (Open-Meteo). These are **forecasts** and may differ from the actual situation. The provider makes no warranty of timeliness, accuracy or completeness.

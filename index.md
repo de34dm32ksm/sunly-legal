@@ -5,7 +5,7 @@ layout: page
 
 # Sunly — Rechtliche Hinweise
 
-Willkommen auf der rechtlichen Übersichts-Seite der App **Sunly** — ein privates, nicht-kommerzielles Hobby-Projekt.
+Willkommen auf der rechtlichen Übersichts-Seite der App **Sunly** — eine private, nicht-kommerziell betriebene Wellness-/Lifestyle-App von Marius Alexander Becker.
 
 ---
 
@@ -31,4 +31,4 @@ Willkommen auf der rechtlichen Übersichts-Seite der App **Sunly** — ein priva
 ---
 
 *Diese Seite wird statisch aus den Markdown-Quellen im Repository generiert.
-Stand der Dokumente: 2. Mai 2026*
+Stand der Dokumente: 8. Mai 2026*

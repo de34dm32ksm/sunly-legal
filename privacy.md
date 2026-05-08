@@ -1,11 +1,11 @@
-﻿---
+---
 title: Datenschutzerklärung
 layout: page
 ---
 
 # Datenschutzerklärung — Sunly
 
-**Stand:** 2. Mai 2026 · **Version:** 1.0
+**Stand:** 8. Mai 2026 · **Version:** 1.1
 
 ---
 
@@ -20,13 +20,13 @@ Deutschland
 
 E-Mail: mail@mariusbecker.me
 
-Sunly ist ein **privates, nicht-kommerzielles Hobby-Projekt**. Es gibt keinen gesetzlich vorgeschriebenen Datenschutzbeauftragten (Art. 37 DSGVO), da die Schwellenwerte für eine Bestellpflicht nicht überschritten werden.
+Sunly wird privat und nicht-kommerziell betrieben. Es gibt keinen gesetzlich vorgeschriebenen Datenschutzbeauftragten (Art. 37 DSGVO), da die Schwellenwerte für eine Bestellpflicht nicht überschritten werden.
 
 ---
 
 ## 2. Geltungsbereich
 
-Diese Datenschutzerklärung gilt für die mobile Anwendung **Sunly** (im Folgenden „App") für Android, hergestellt unter dem Bundle-Identifier `com.mariusbecker.sunnysafe`. Sie informiert die Nutzer (im Folgenden „du") über Art, Umfang und Zweck der Verarbeitung personenbezogener Daten.
+Diese Datenschutzerklärung gilt für die mobile Anwendung **Sunly** (im Folgenden „App") für Android, veröffentlicht unter der Application-ID `com.mariusbecker.sunly`. Sie informiert die Nutzer (im Folgenden „du") über Art, Umfang und Zweck der Verarbeitung personenbezogener Daten.
 
 Die App dient ausschließlich Wellness- und Lifestyle-Zwecken (UV-Index-Tracking, Bräunungsplanung, Vitamin-D-Schätzung). Sie ist **kein Medizinprodukt** im Sinne der Verordnung (EU) 2017/745 (MDR) und ersetzt keinerlei ärztliche Beratung, Diagnose oder Behandlung.
 
@@ -257,10 +257,8 @@ Wir treffen folgende technische und organisatorische Maßnahmen:
 
 ## 14. Aktualität und Änderung dieser Datenschutzerklärung
 
-Diese Datenschutzerklärung ist aktuell gültig in der oben genannten Version (Stand: 2. Mai 2026). Durch die Weiterentwicklung der App oder rechtliche Änderungen kann eine Anpassung erforderlich werden. Die jeweils aktuelle Datenschutzerklärung kann jederzeit im Profil-Menü unter „Datenschutz" eingesehen werden.
+Diese Datenschutzerklärung ist aktuell gültig in der oben genannten Version (Stand: 8. Mai 2026). Durch die Weiterentwicklung der App oder rechtliche Änderungen kann eine Anpassung erforderlich werden. Die jeweils aktuelle Datenschutzerklärung kann jederzeit im Profil-Menü unter „Datenschutz" eingesehen werden.
 
 ---
 
 **Ende der Datenschutzerklärung**
-
----

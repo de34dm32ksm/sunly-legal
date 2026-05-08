@@ -5,6 +5,13 @@ title: Sunly · Rechtliche Hinweise
 description: Datenschutzerklärung, Nutzungsbedingungen und Impressum für die App Sunly
 lang: de
 
+# URL-Struktur für GitHub Pages Project-Site:
+#   Live-URL: https://de34dm32ksm.github.io/sunly-legal/
+#   baseurl muss "/sunly-legal" sein, damit relative_url-Filter im Layout
+#   die internen Links (./privacy, ./terms etc.) korrekt prefixen.
+url: "https://de34dm32ksm.github.io"
+baseurl: "/sunly-legal"
+
 # Markdown-Engine
 markdown: kramdown
 kramdown:
