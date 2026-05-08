@@ -34,23 +34,32 @@ Die App dient ausschließlich Wellness- und Lifestyle-Zwecken (UV-Index-Tracking
 
 ## 3. Grundsatz: Lokale Datenhaltung
 
-Sunly ist als **datensparsame, lokal arbeitende App** konzipiert. Es gibt:
+Sunly ist als **datensparsame, lokal arbeitende App** konzipiert.
+
+**Was Sunly NICHT hat:**
 
 - ❌ **Keinen Cloud-Account und keine Server-User-Datenbank** bei Sunly selbst
 - ❌ **Keine Anmeldung, keinen Login, keine E-Mail-Adresse** beim Anbieter
 - ❌ **Kein Marketing-/Verhaltens-Tracking, keine Werbe-IDs**, keine klassischen Analytics-Tools (Google Analytics, Firebase Analytics, AppsFlyer o. Ä.)
-- ✅ Profil, Sessions, Fotos und Einstellungen werden **ausschließlich lokal** auf deinem Endgerät gespeichert (Android `localStorage` + Filesystem)
+- ❌ **Keinen Push-Server** (kein Firebase Cloud Messaging, kein OneSignal) — alle Benachrichtigungen werden lokal auf dem Gerät geplant
 
-Bei Deinstallation der App werden alle lokal gespeicherten Daten vollständig entfernt.
+**Was lokal auf deinem Gerät bleibt (verlässt es nie):**
 
-**Was trotzdem an externe Stellen geht (transparent, nichts versteckt):**
+- ✅ **Profil**: Hauttyp, Augenfarbe, Geschlecht, Wunsch-Bräune, Einstellungen
+- ✅ **Sessions**: Bräunungs-History, Streaks, Vitamin-D-Schätzungen
+- ✅ **Verlaufs-Fotos**: bis zu 50 Selfies, die du selbst für den Bräunungs-Fortschritt speicherst (Capacitor `Directory.DATA`)
+- ✅ **Einwilligungs-Nachweise und App-Cache** (UV-Daten-Cache, Geocoding-Cache)
 
+Bei Deinstallation der App werden alle diese lokalen Daten vollständig entfernt.
+
+**Was an externe Stellen geht (transparent, nichts versteckt):**
+
+- ⚠️ **KI-Scan-Foto**: Wenn du den optionalen KI-Hauttyp-Scan aktiv startest, wird das Selfie an Google Vertex AI (Frankfurt) gesendet — ausschließlich für die Analyse, **nicht dort gespeichert**, nicht zum KI-Training verwendet (Google Cloud DPA). Details: Abschnitt 4.1.
 - ⚠️ **Anonyme Crash-Reports** zur Fehlerbehebung an Sentry (Frankfurt) — abschaltbar in *Profil → Crash-Reports*. Details: Abschnitt 4.3.
 - ⚠️ **GPS-Koordinaten** an Open-Meteo (Schweiz) für UV-/Wetter-Daten, ohne User-Kennung. Details: Abschnitt 4.4.
-- ⚠️ **Optional: Selfie-Foto** an Google Vertex AI (Frankfurt, via Cloudflare-Edge) — nur wenn du aktiv den KI-Scan startest. Details: Abschnitt 4.1.
-- ⚠️ **Technische Verbindungs-Metadaten** (IP, User-Agent, ASN) bei Vertex-AI-Calls über Cloudflare-Edge zur Missbrauchs-Abwehr (max. 30 Tage gespeichert). Details: Abschnitt 4.2.
+- ⚠️ **Technische Verbindungs-Metadaten** (IP, User-Agent, ASN) bei KI-Scan-Calls über Cloudflare-Edge zur Missbrauchs-Abwehr (max. 30 Tage Edge-Logs). Details: Abschnitt 4.2.
 
-Alle vier sind in den folgenden Abschnitten 4.1-4.4 mit Auftragsverarbeiter, Verarbeitungsregion, Speicherdauer und Rechtsgrundlage dokumentiert.
+Alle vier externen Datenflüsse sind in den folgenden Abschnitten 4.1-4.4 mit Auftragsverarbeiter, Verarbeitungsregion, Speicherdauer und Rechtsgrundlage einzeln dokumentiert.
 
 ---
 

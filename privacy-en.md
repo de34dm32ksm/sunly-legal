@@ -36,23 +36,32 @@ The App is exclusively for wellness and lifestyle purposes (UV index tracking, t
 
 ## 3. Principle: Local Data Storage
 
-Sunly is designed as a **data-minimal, locally operating app**. There is:
+Sunly is designed as a **data-minimal, locally operating app**.
+
+**What Sunly does NOT have:**
 
 - ❌ **No cloud account and no server-side user database** at Sunly
 - ❌ **No login, no registration, no email collection** on our side
 - ❌ **No marketing/behavioral tracking, no advertising IDs**, no classic analytics tools (Google Analytics, Firebase Analytics, AppsFlyer, etc.)
-- ✅ Profile, sessions, photos and settings are stored **exclusively locally** on your device (Android `localStorage` + filesystem)
+- ❌ **No push server** (no Firebase Cloud Messaging, no OneSignal) — all notifications are scheduled locally on your device
 
-When you uninstall the App, all locally stored data is completely removed.
+**What stays local on your device (never leaves it):**
+
+- ✅ **Profile**: skin type, eye color, gender, desired tan, settings
+- ✅ **Sessions**: tanning history, streaks, vitamin D estimates
+- ✅ **Progress photos**: up to 50 selfies that you yourself save for tanning progress comparison (Capacitor `Directory.DATA`)
+- ✅ **Consent records and app cache** (UV-data cache, geocoding cache)
+
+When you uninstall the App, all this local data is completely removed.
 
 **What does leave your device (full transparency, nothing hidden):**
 
+- ⚠️ **AI scan photo**: when you actively start the optional AI skin-type scan, the selfie is sent to Google Vertex AI (Frankfurt) — for analysis only, **not stored there**, not used for AI model training (Google Cloud DPA). Details: Section 4.1.
 - ⚠️ **Anonymous crash reports** for bug fixing, sent to Sentry (Frankfurt) — switchable off in *Profile → Crash reports*. Details: Section 4.3.
 - ⚠️ **GPS coordinates** to Open-Meteo (Switzerland) for UV / weather data, without any user identifier. Details: Section 4.4.
-- ⚠️ **Optional: selfie photo** to Google Vertex AI (Frankfurt, via Cloudflare edge) — only when you actively start the AI scan. Details: Section 4.1.
-- ⚠️ **Technical connection metadata** (IP, user agent, ASN) on Vertex-AI calls through the Cloudflare edge for abuse prevention (kept max. 30 days). Details: Section 4.2.
+- ⚠️ **Technical connection metadata** (IP, user agent, ASN) on AI-scan calls through the Cloudflare edge for abuse prevention (max. 30 days edge logs). Details: Section 4.2.
 
-All four are documented in detail in Sections 4.1-4.4 with sub-processor, processing region, retention period and legal basis.
+All four external data flows are individually documented in Sections 4.1-4.4 with sub-processor, processing region, retention period and legal basis.
 
 ---
 
