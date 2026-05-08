@@ -5,7 +5,7 @@ layout: page
 
 # Privacy Policy — Sunly
 
-**Last updated:** May 8, 2026 · **Version:** 1.1
+**Last updated:** May 8, 2026 · **Version:** 1.2
 
 > **Note:** This is the English translation of the German privacy policy. In the event of any conflict or inconsistency, the German version (`Sunly_Datenschutzerklaerung_DE.md`) prevails.
 
@@ -75,7 +75,7 @@ Data processing agreements pursuant to Art. 28 GDPR are in place with all sub-pr
 
 **Purpose of processing:** AI-supported estimation of your skin type, skin tone and eye color based on a selfie photo. The result is used exclusively to personalize your individual tanning plan (recommended sun exposure time per side, sun protection factor, optimal tanning window).
 
-**Data transmitted:** Selfie photo (JPEG, base64-encoded) + a text prompt provided by the Controller. **No** further profile data, location data or device IDs are transmitted.
+**Data transmitted:** Selfie photo (JPEG, base64-encoded), a text prompt provided by the Controller, and the app language (`de` or `en`, so the AI returns its reasoning in the right language). **No** further profile data (skin type, eye color, etc.), location data or persistent device IDs are transmitted.
 
 **Processing region:** `europe-west3` (Frankfurt am Main, Germany). The data does not leave the European Union.
 
@@ -83,18 +83,19 @@ Data processing agreements pursuant to Art. 28 GDPR are in place with all sub-pr
 
 **Legal basis:** Art. 6(1)(a) GDPR (consent), supplemented by Art. 9(2)(a) GDPR (explicit consent) where applicable.
 
-**Consent mechanism:** Detailed disclosures about the data flow (Cloudflare edge → Vertex AI Frankfurt), storage guarantees and training opt-out are available on the in-app Privacy screen, the Wellness notice and the Onboarding info overlay before any photo is taken. Consent is granted by actively triggering the photo capture and can be withdrawn at any time.
+**Consent mechanism:** Before the first AI-assisted scan, the App displays a modal consent dialog that describes the data flow (Cloudflare edge → Vertex AI Frankfurt), the storage and training guarantees, and the right of withdrawal. The dialog contains:
 
-**Locale-specific consent dialog (DE interface):** Users running the German interface (`de` locale) additionally see a dedicated modal consent dialog before the first AI-assisted scan. The dialog contains a **mandatory confirmation checkbox** worded as:
+- the title "🤖 KI-Foto-Analyse" / "🤖 AI photo analysis",
+- a brief description of the data flow ("Your selfie is briefly analysed by Vertex AI in Frankfurt — not stored."),
+- an explicit disclaimer with the wording: *"By tapping 'I agree' you accept Sunly's [Privacy Policy] and [Terms] (16+)."* — the bracketed links open the respective full texts directly in the App,
+- a primary action button **"I agree"** / **"Einverstanden"** (yellow, prominent),
+- optionally a secondary "Skip · answer questions instead" button (onboarding path) that fully bypasses the AI analysis.
 
-> *"Ich bin mindestens 16 Jahre alt und willige in die Verarbeitung meines Fotos durch Vertex AI Frankfurt gemäß Art. 9 DSGVO ein."*
-> (English: *"I am at least 16 years old and consent to the processing of my photo by Vertex AI Frankfurt pursuant to Art. 9 GDPR."*)
+Only by actively tapping the "I agree" button does the user confirm **two facts** in a single declaration: (a) the minimum age under Art. 8 GDPR in conjunction with § 8 BDSG ("16+"), and (b) explicit consent to the processing of biometric-like features under Art. 9(2)(a) GDPR. This construction (an unambiguous primary button with linked disclaimer) qualifies as a "clear affirmative action" under Recital 32 GDPR and is a valid form of consent.
 
-This single declaration covers **two facts**: (a) the minimum age under Art. 8 GDPR in conjunction with § 8 BDSG, and (b) explicit consent to processing of biometric-like features under Art. 9(2)(a) GDPR. Processing only begins after the user actively checks the box and taps the primary button. The consent record is stored locally (`localStorage` key `sunny:aiConsent`) with timestamp, version (`v1.1`), locale, minimum age and confirmation flag.
+The consent record is stored locally (`localStorage` key `sunny:aiConsent`) with timestamp, version (`v1.2`), locale, minimum-age flags (`ageConfirmed: true`, `minimumAge: 16`) and flow identifier (`flow: 'minimal-button'`).
 
-**Important:** The modal is shown **only** when the user actively chooses the AI-scan path. Users who choose the alternative questionnaire path during onboarding do not process any photo and therefore do not trigger Art. 9 processing — a separate minimum-age confirmation is not required in that case, since no special-category data is being processed.
-
-Users on the English interface receive the same disclosures through the in-app Privacy screen, the Wellness notice and the Onboarding info overlay; given that the App is primarily targeted at non-EU markets in English, no separate explicit-consent modal is shown.
+**Important:** The modal is shown **before every first AI-scan attempt — regardless of the app language**. Users who choose the alternative questionnaire path during onboarding do not process any photo and therefore do not trigger Art. 9 processing — a separate minimum-age confirmation is not required in that case, since no special-category data is being processed.
 
 **Withdrawal:** You can withdraw consent any time via *Profile → Reset data*; this also removes the local consent record. Alternatively, you can skip the scan entirely (questionnaire path with the same outcome).
 
@@ -146,17 +147,56 @@ Users on the English interface receive the same disclosures through the in-app P
 
 **Contractual documents:** Sentry Data Processing Addendum (Version 5.1.0 or higher) — formally accepted by the Controller.
 
-### 4.4 Open-Meteo (Weather and UV Data)
+### 4.4 Open-Meteo (Weather, UV and Geocoding Data)
 
 **Provider:** Open-Meteo, Bundesgasse 5, 3011 Bern, Switzerland.
 
-**Purpose of processing:** Retrieval of the current UV index, weather and UV forecast for your location to personalize tanning and sun protection recommendations.
+**Purpose of processing:**
 
-**Data transmitted:** Geographic coordinates (latitude and longitude). **No user identifier** is transmitted — requests cannot be attributed to a person.
+- Retrieval of the current UV index, weather and UV forecast for your location (`api.open-meteo.com`).
+- Resolution of city names to coordinates when you manually search for a city in the app (`geocoding-api.open-meteo.com`).
+
+**Data transmitted:**
+
+- On the automatic GPS path: geographic coordinates (latitude and longitude).
+- On the manual city search path: the city name you entered (e.g. "Munich") plus locale.
+
+In both cases, **no user identifier** is transmitted — requests cannot be attributed to any person.
 
 **Processing region:** Switzerland (recognized as a safe third country under Art. 45 GDPR in conjunction with the EU Commission's adequacy decision).
 
 **Legal basis:** Art. 6(1)(f) GDPR (legitimate interest in providing the core "UV tracking" function).
+
+### 4.5 Web Fonts (Google Fonts and Fontshare)
+
+**Providers:**
+
+- **Google Fonts** — Google Ireland Limited, Gordon House, Barrow Street, Dublin 4, Ireland (for Manrope, Outfit, Roboto Mono, Inter via `fonts.googleapis.com`).
+- **Fontshare** — Indian Type Foundry Pvt. Ltd., 11 Lalita Park, Laxmi Nagar, Delhi 110092, India (for Satoshi and Cabinet Grotesk via `api.fontshare.com`).
+
+**Purpose of processing:** Delivery of the app UI fonts on first start. The `display=optional` strategy ensures that if the connection fails after ~100 ms, the system font is used (no layout shift).
+
+**Data transmitted:** IP address, user agent, referrer (from the WebView).
+
+**Processing region:** Global CDN networks (Google: incl. EU; Fontshare: incl. EU/USA/India). Fontshare involves India — no adequacy decision; Fontshare relies on its own Standard Contractual Clauses (see Fontshare Privacy Policy).
+
+**Legal basis:** Art. 6(1)(f) GDPR (legitimate interest in consistent, legible typography).
+
+**Planned mitigation:** Fonts will be bundled locally in the app in a future version, eliminating this data flow entirely.
+
+### 4.6 OpenStreetMap Foundation (Reverse Geocoding)
+
+**Provider:** OpenStreetMap Foundation, St John's Innovation Centre, Cowley Road, Cambridge, CB4 0WS, United Kingdom.
+
+**Purpose of processing:** Reverse geocoding of GPS coordinates to readable city names via the `nominatim.openstreetmap.org` endpoint (e.g. "48.13, 11.58" → "Munich, DE"). Used in addition to Open-Meteo because Nominatim provides more precise city labels for UI display.
+
+**Data transmitted:** Latitude and longitude, locale, static user agent (`Sunly/1.0`). No user identifier.
+
+**Processing region:** United Kingdom (recognized as a safe third country under Art. 45 GDPR in conjunction with the UK adequacy decision of 28 June 2021).
+
+**Retention:** Nominatim keeps standard webserver logs per OSMF Privacy Policy (max. 14 days). Requests are deleted thereafter.
+
+**Legal basis:** Art. 6(1)(f) GDPR (legitimate interest in precise city-name display in the UI).
 
 ---
 
@@ -270,7 +310,7 @@ The Sunly App is a native Android application and uses **no cookies**. The stora
 We implement the following technical and organizational measures:
 
 - **Transport encryption (TLS 1.2+)** for all external API connections
-- **OAuth 2.0 / Service Account authentication** for the Vertex AI interface (no API key in the distributed app bundle)
+- **OAuth 2.0 / Service Account authentication** for the Vertex AI interface: the Google service-account key resides exclusively on the Cloudflare worker (as a worker secret), **not** in the distributed app bundle. The app bundle only contains a simple worker-shared key that does NOT enable Google Cloud authentication — it merely makes external direct calls to the worker endpoint harder (soft protection, not an auth mechanism).
 - **Cloudflare edge protection** with IP-based rate limiting (30 requests per hour) and Web Application Firewall
 - **Local photo storage** in the sandboxed Capacitor filesystem (no access by other apps)
 - **Crash report filter** (`beforeSend` hook) automatically removes potential image data from stack traces before transmission to Sentry
@@ -280,7 +320,16 @@ We implement the following technical and organizational measures:
 
 ## 14. Currency and Modification of this Privacy Policy
 
-This Privacy Policy is currently effective in the version stated above (last updated: May 8, 2026). Further development of the App or legal changes may require modification. The current Privacy Policy can be viewed at any time in the Profile menu under "Privacy".
+This Privacy Policy is currently effective in the version stated above (last updated: May 8, 2026, version 1.2). Further development of the App or legal changes may require modification. The current Privacy Policy can be viewed at any time in the Profile menu under "Privacy".
+
+**Changes in v1.2 vs. v1.1 (May 8, 2026):**
+
+- Section 3 restructured into "What Sunly does NOT have" / "What stays local" / "What does leave your device" — photo data flow clearly separated into progress photos vs. AI scan photo.
+- Section 4.1 expanded: locale is now sent along with the Vertex AI inference; consent mechanism precisely described as "unambiguous primary button with linked disclaimer" (instead of "mandatory confirmation checkbox"); modal is shown regardless of app language.
+- Section 4.4 expanded: city name as an alternative search parameter alongside coordinates.
+- New Section 4.5 (web fonts: Google Fonts + Fontshare).
+- New Section 4.6 (OpenStreetMap reverse geocoding).
+- Section 13 clarified: distinction between service-account key (worker secret) and worker-shared key (soft protection in bundle).
 
 ---
 
