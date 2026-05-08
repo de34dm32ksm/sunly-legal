@@ -5,7 +5,7 @@ layout: page
 
 # Datenschutzerklärung — Sunly
 
-**Stand:** 8. Mai 2026 · **Version:** 1.5
+**Stand:** 8. Mai 2026 · **Version:** 1.6
 
 ---
 
@@ -135,6 +135,8 @@ Der Einwilligungs-Nachweis wird mit Zeitstempel, Versionsnummer (`v1.2`), Locale
 
 **Hinweis zu besonderen Kategorien (Art. 9 DSGVO):** Da das Selfie biometrieähnliche Merkmale enthalten kann, ist der oben beschriebene Einwilligungs-Mechanismus als ausdrückliche Einwilligung im Sinne von Art. 9 Abs. 2 lit. a DSGVO ausgestaltet. Die Verarbeitung dient nicht der eindeutigen Identifizierung einer Person, sondern ausschließlich der Hauttyp-Einschätzung im Wellness-Kontext.
 
+**Hinweis zur Fitzpatrick-Klassifikation:** Die in der KI-Antwort genutzte Fitzpatrick-Skala (I–VI) ist ursprünglich ein dermatologischer Standard. Sunly verwendet sie ausschließlich im **Wellness-/Lifestyle-Kontext** als statistische Schätzung zur Personalisierung des Bräunungs-Plans — sie ersetzt **nicht** die ärztliche Hauttyp-Bestimmung, ist **keine medizinische Diagnose** und Sunly ist **kein Medizinprodukt** im Sinne der Verordnung (EU) 2017/745 (MDR). Du kannst das Ergebnis jederzeit manuell überschreiben (siehe Abschnitt 11).
+
 **Vertragsdokumente:** Cloud Data Processing Addendum, Standard Contractual Clauses (EU C2P), Subprocessor-Liste — abrufbar unter https://cloud.google.com/terms/data-processing-addendum bzw. https://cloud.google.com/terms/subprocessors.
 
 ### 4.2 Cloudflare (Edge-Proxy)
@@ -188,6 +190,7 @@ Der Einwilligungs-Nachweis wird mit Zeitstempel, Versionsnummer (`v1.2`), Locale
 **Verarbeitungszweck:**
 
 - Abruf des aktuellen UV-Index, des Wetters und der UV-Vorhersage für deinen Standort (`api.open-meteo.com`).
+- Abruf der Luftqualitäts-Daten ergänzend zum Wetter (`air-quality-api.open-meteo.com`).
 - Auflösung von Stadt-Namen zu Koordinaten, wenn du in der App manuell eine Stadt suchst (`geocoding-api.open-meteo.com`).
 
 **Übermittelte Daten:**
@@ -354,7 +357,12 @@ Wir treffen folgende technische und organisatorische Maßnahmen:
 
 ## 14. Aktualität und Änderung dieser Datenschutzerklärung
 
-Diese Datenschutzerklärung ist aktuell gültig in der oben genannten Version (Stand: 8. Mai 2026, Version 1.5). Durch die Weiterentwicklung der App oder rechtliche Änderungen kann eine Anpassung erforderlich werden. Die jeweils aktuelle Datenschutzerklärung kann jederzeit im Profil-Menü unter „Datenschutz" eingesehen werden.
+Diese Datenschutzerklärung ist aktuell gültig in der oben genannten Version (Stand: 8. Mai 2026, Version 1.6). Durch die Weiterentwicklung der App oder rechtliche Änderungen kann eine Anpassung erforderlich werden. Die jeweils aktuelle Datenschutzerklärung kann jederzeit im Profil-Menü unter „Datenschutz" eingesehen werden.
+
+**Änderungen in v1.6 gegenüber v1.5 (8. Mai 2026 — finaler Pre-Submission-Audit):**
+
+- Abschnitt 4.1 ergänzt um „Hinweis zur Fitzpatrick-Klassifikation" — explizite Wellness-/Lifestyle-Disambiguierung; klarstellt dass Fitzpatrick I–VI nur als statistische Schätzung im Wellness-Kontext genutzt wird, keine medizinische Diagnose, kein Medizinprodukt im Sinne der MDR.
+- Abschnitt 4.4 ergänzt: Subdomain `air-quality-api.open-meteo.com` für Luftqualitäts-Daten — vorher implizit unter „api.open-meteo.com" subsumiert, jetzt explizit gelistet.
 
 **Änderungen in v1.5 gegenüber v1.4 (8. Mai 2026):**
 

@@ -5,7 +5,7 @@ layout: page
 
 # Privacy Policy — Sunly
 
-**Last updated:** May 8, 2026 · **Version:** 1.5
+**Last updated:** May 8, 2026 · **Version:** 1.6
 
 > **Note:** This is the English translation of the German privacy policy. In the event of any conflict or inconsistency, the German version (`Sunly_Datenschutzerklaerung_DE.md`) prevails.
 
@@ -137,6 +137,8 @@ The consent record is stored locally (`localStorage` key `sunny:aiConsent`) with
 
 **Notice on special categories (Art. 9 GDPR):** Since the selfie may contain biometric-like features, the consent mechanism described above is designed to satisfy Art. 9(2)(a) GDPR. Processing is not for the unique identification of a person, but exclusively for skin type estimation in a wellness context.
 
+**Notice on Fitzpatrick classification:** The Fitzpatrick scale (I–VI) used in the AI response is originally a dermatological standard. Sunly uses it exclusively in a **wellness / lifestyle context** as a statistical estimate to personalize the tanning plan — it does **not** replace a medical skin-type assessment, is **not a medical diagnosis**, and Sunly is **not a medical device** within the meaning of Regulation (EU) 2017/745 (MDR). You can manually override the result at any time (see Section 11).
+
 **Contractual documents:** Cloud Data Processing Addendum, Standard Contractual Clauses (EU C2P), Sub-Processor list — available at https://cloud.google.com/terms/data-processing-addendum and https://cloud.google.com/terms/subprocessors.
 
 ### 4.2 Cloudflare (Edge Proxy)
@@ -190,6 +192,7 @@ The consent record is stored locally (`localStorage` key `sunny:aiConsent`) with
 **Purpose of processing:**
 
 - Retrieval of the current UV index, weather and UV forecast for your location (`api.open-meteo.com`).
+- Retrieval of air-quality data in addition to weather (`air-quality-api.open-meteo.com`).
 - Resolution of city names to coordinates when you manually search for a city in the app (`geocoding-api.open-meteo.com`).
 
 **Data transmitted:**
@@ -356,7 +359,12 @@ We implement the following technical and organizational measures:
 
 ## 14. Currency and Modification of this Privacy Policy
 
-This Privacy Policy is currently effective in the version stated above (last updated: May 8, 2026, version 1.5). Further development of the App or legal changes may require modification. The current Privacy Policy can be viewed at any time in the Profile menu under "Privacy".
+This Privacy Policy is currently effective in the version stated above (last updated: May 8, 2026, version 1.6). Further development of the App or legal changes may require modification. The current Privacy Policy can be viewed at any time in the Profile menu under "Privacy".
+
+**Changes in v1.6 vs. v1.5 (May 8, 2026 — final pre-submission audit):**
+
+- Section 4.1 expanded with "Notice on Fitzpatrick classification" — explicit wellness/lifestyle disambiguation; clarifies that Fitzpatrick I–VI is used only as a statistical estimate in a wellness context, not as a medical diagnosis, not as a medical device under MDR.
+- Section 4.4 expanded: subdomain `air-quality-api.open-meteo.com` for air-quality data — previously implicitly subsumed under "api.open-meteo.com", now explicitly listed.
 
 **Changes in v1.5 vs. v1.4 (May 8, 2026):**
 

@@ -41,7 +41,7 @@ Sunly nutzt drei externe Dienste für einzelne Funktionen:
 |---|---|---|
 | **Google Cloud Vertex AI** (Frankfurt) | Foto bei KI-Hauttyp-Scan | nicht gespeichert (nur Inferenz) |
 | **Cloudflare Edge Worker** (EU) | Anfrage-Routing, IP-Adresse | max. 30 Tage (Logs) |
-| **Sentry** (Frankfurt) | Crash-Reports (anonym, opt-out) | max. 90 Tage |
+| **Sentry** (Frankfurt) | Crash-Reports (anonym, opt-out) | max. 30 Tage |
 
 Für Lösch-Anfragen bei diesen Dienstleistern, schreibe an:
 
@@ -61,7 +61,7 @@ Falls du nur die Crash-Reports stoppen willst, ohne den Rest zu löschen:
 
 **Pfad:** `Profil` → `Crash-Reports` → `Aus`
 
-→ Sentry sendet ab sofort keine neuen Reports. Bereits übermittelte Reports werden bei Sentry automatisch nach 30–90 Tagen gelöscht (Standard-Retention).
+→ Sentry sendet ab sofort keine neuen Reports. Bereits übermittelte Reports werden bei Sentry automatisch nach max. 30 Tagen gelöscht (Free-Plan-Standard-Retention).
 
 ---
 
@@ -97,7 +97,7 @@ Sunly uses three external services for specific features:
 |---|---|---|
 | **Google Cloud Vertex AI** (Frankfurt) | Photo during AI skin scan | not stored (inference only) |
 | **Cloudflare Edge Worker** (EU) | Request routing, IP address | max. 30 days (logs) |
-| **Sentry** (Frankfurt) | Crash reports (anonymous, opt-out) | max. 90 days |
+| **Sentry** (Frankfurt) | Crash reports (anonymous, opt-out) | max. 30 days |
 
 For deletion requests at these processors, email:
 
@@ -115,4 +115,4 @@ If you just want to stop crash reports without deleting everything else:
 
 **Path:** `Profile` → `Crash reports` → `Off`
 
-→ Sentry stops sending new reports immediately. Existing reports auto-delete at Sentry after 30–90 days (standard retention).
+→ Sentry stops sending new reports immediately. Existing reports auto-delete at Sentry after max. 30 days (Free plan standard retention).
