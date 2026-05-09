@@ -5,7 +5,7 @@ layout: page
 
 # Privacy Policy — Sunly
 
-**Last updated:** May 8, 2026 · **Version:** 1.6
+**Last updated:** May 9, 2026 · **Version:** 1.7
 
 > **Note:** This is the English translation of the German privacy policy. In the event of any conflict or inconsistency, the German version (`Sunly_Datenschutzerklaerung_DE.md`) prevails.
 
@@ -267,13 +267,27 @@ You can revoke location access at any time in the Android system settings. Witho
 
 ---
 
-## 7. Push Notifications
+## 7. Push Notifications and Step Vibrations
 
-Sunly uses **Android LocalNotifications** for UV warnings, daily push updates and routine notifications. These are scheduled and triggered **entirely on your device** — there is **no push server** at Sunly or any third party (no Firebase Cloud Messaging, no OneSignal, no APNS routing through external servers).
+Sunly uses **Android LocalNotifications** and the system `AlarmManager.setAlarmClock()` API for UV warnings, daily push updates, routine notifications and tanning step vibrations. These are scheduled and triggered **entirely on your device** — there is **no push server** at Sunly or any third party (no Firebase Cloud Messaging, no OneSignal, no APNS routing through external servers).
 
 You can disable notifications at any time via the Profile menu ("Notifications") or the Android system settings.
 
 **Legal basis:** Art. 6(1)(a) GDPR (consent through actively granting the notification permission on first launch).
+
+### 7.1 Battery exemption for punctual step vibrations (`REQUEST_IGNORE_BATTERY_OPTIMIZATIONS`, opt-in)
+
+On Samsung, Xiaomi and Huawei devices, the "Optimized battery" mode can delay `setAlarmClock` broadcast delivery for third-party apps by 30 to 60 seconds. To ensure tanning step vibrations fire on time even when the screen is locked, the app offers an **opt-in battery exemption**.
+
+**Properties of this exemption:**
+
+- **Opt-in:** It is requested **exclusively** via an Android system Yes/No dialog when you actively enable Routine Vibration in the Profile screen. It is **never** requested automatically — neither at app start, in onboarding, nor in the background.
+- **Reversible:** You can revoke it anytime — either by disabling Routine Vibration in the Profile or directly in the Android system settings (*Settings → Apps → Sunly → Battery → Optimized*).
+- **Functionally narrow:** The exemption only ensures that scheduled tanning step alarms are not delayed by battery optimization. It does **not** allow background tracking, **no** background data processing outside of actively started tanning sessions, and **no** extension of the app's runtime.
+
+The app continues to work **without** this exemption — foreground vibrations (app open) are punctual either way; only background vibrations may be delayed depending on the manufacturer.
+
+**Legal basis:** Art. 6(1)(a) GDPR (consent — two-stage: active tap on "I agree, let's go" in the in-app modal + confirmation in the Android system dialog).
 
 ---
 
@@ -359,7 +373,13 @@ We implement the following technical and organizational measures:
 
 ## 14. Currency and Modification of this Privacy Policy
 
-This Privacy Policy is currently effective in the version stated above (last updated: May 8, 2026, version 1.6). Further development of the App or legal changes may require modification. The current Privacy Policy can be viewed at any time in the Profile menu under "Privacy".
+This Privacy Policy is currently effective in the version stated above (last updated: May 9, 2026, version 1.7). Further development of the App or legal changes may require modification. The current Privacy Policy can be viewed at any time in the Profile menu under "Privacy".
+
+**Changes in v1.7 vs. v1.6 (May 9, 2026):**
+
+- New Section 7.1 "Battery exemption for punctual step vibrations" — describes the opt-in `REQUEST_IGNORE_BATTERY_OPTIMIZATIONS` permission, requested exclusively when the user actively enables Routine Vibration (never automatically).
+- Architectural background: previously the app implemented the step timer via a Foreground Service with `FOREGROUND_SERVICE_SPECIAL_USE` permission. This was replaced with the Play-Store-compliant `AlarmManager.setAlarmClock()` mechanism — which makes the opt-in battery exemption necessary for punctual background triggers on restrictive OEMs (Samsung etc.).
+- Section 7 title expanded from "Push Notifications" to "Push Notifications and Step Vibrations" because the mechanism now also covers local step-end alerts via `AlarmManager`.
 
 **Changes in v1.6 vs. v1.5 (May 8, 2026 — final pre-submission audit):**
 

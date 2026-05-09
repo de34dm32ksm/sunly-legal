@@ -5,7 +5,7 @@ layout: page
 
 # Datenschutzerklärung — Sunly
 
-**Stand:** 8. Mai 2026 · **Version:** 1.6
+**Stand:** 9. Mai 2026 · **Version:** 1.7
 
 ---
 
@@ -265,13 +265,27 @@ Du kannst den Standort-Zugriff jederzeit in den Android-Systemeinstellungen wide
 
 ---
 
-## 7. Push-Benachrichtigungen
+## 7. Push-Benachrichtigungen und Step-Vibrationen
 
-Sunly verwendet **Android-LocalNotifications** für UV-Warnungen, tägliche Push-Updates und Routine-Benachrichtigungen. Diese werden **vollständig auf deinem Endgerät** geplant und ausgelöst — es gibt **keinen Push-Server** bei Sunly oder einem Drittanbieter (kein Firebase Cloud Messaging, kein OneSignal, kein APNS-Routing über externe Server).
+Sunly verwendet **Android-LocalNotifications** und das System-`AlarmManager.setAlarmClock()`-API für UV-Warnungen, tägliche Push-Updates, Routine-Benachrichtigungen und Bräunungs-Step-Vibrationen. Diese werden **vollständig auf deinem Endgerät** geplant und ausgelöst — es gibt **keinen Push-Server** bei Sunly oder einem Drittanbieter (kein Firebase Cloud Messaging, kein OneSignal, kein APNS-Routing über externe Server).
 
 Du kannst Benachrichtigungen jederzeit über das Profil-Menü („Benachrichtigungen") oder die Android-Systemeinstellungen abschalten.
 
 **Rechtsgrundlage:** Art. 6 Abs. 1 lit. a DSGVO (Einwilligung durch aktives Erlauben der Benachrichtigungs-Berechtigung beim ersten Aufruf).
+
+### 7.1 Akku-Ausnahme für punktgenaue Step-Vibrationen (`REQUEST_IGNORE_BATTERY_OPTIMIZATIONS`, opt-in)
+
+Auf Samsung-, Xiaomi- und Huawei-Geräten kann der „Optimierte Akku"-Modus die Auslieferung von `setAlarmClock`-Alarmen für Drittanbieter-Apps um 30 bis 60 Sekunden verzögern. Damit Bräunungs-Step-Vibrationen auch bei gesperrtem Bildschirm sekundengenau feuern können, bietet die App eine **opt-in Akku-Ausnahme** an.
+
+**Eigenschaften der Ausnahme:**
+
+- **Opt-in:** Sie wird **ausschließlich** dann über einen Android-System-Yes/No-Dialog angefragt, wenn du im Profil-Screen die Routine-Vibration aktiv einschaltest. Sie wird **niemals automatisch** beim App-Start, im Onboarding oder im Hintergrund angefragt.
+- **Reversibel:** Du kannst sie jederzeit zurücknehmen — entweder durch Ausschalten der Routine-Vibration im Profil oder direkt in den Android-System-Einstellungen (*Einstellungen → Apps → Sunly → Akku → Optimiert*).
+- **Funktional eng begrenzt:** Die Ausnahme erlaubt **ausschließlich**, dass deine selbst gestarteten Bräunungs-Step-Alarme nicht von der Akku-Optimierung verzögert ausgeliefert werden. Sie erlaubt der App **kein** Background-Tracking, **keine** Hintergrund-Datenverarbeitung außerhalb deiner aktiv gestarteten Bräunungs-Sessions, und **keine** Verlängerung der App-Laufzeit.
+
+Die App funktioniert auch **ohne** diese Ausnahme weiter — Vibrationen im Vordergrund (App offen) sind in jedem Fall punktgenau, lediglich Background-Vibrationen können dann je nach Hersteller verzögert eintreffen.
+
+**Rechtsgrundlage:** Art. 6 Abs. 1 lit. a DSGVO (Einwilligung — zweistufig: aktiver Tap auf „Einverstanden, los geht's" im in-app-Modal + Bestätigung im Android-System-Dialog).
 
 ---
 
@@ -357,7 +371,13 @@ Wir treffen folgende technische und organisatorische Maßnahmen:
 
 ## 14. Aktualität und Änderung dieser Datenschutzerklärung
 
-Diese Datenschutzerklärung ist aktuell gültig in der oben genannten Version (Stand: 8. Mai 2026, Version 1.6). Durch die Weiterentwicklung der App oder rechtliche Änderungen kann eine Anpassung erforderlich werden. Die jeweils aktuelle Datenschutzerklärung kann jederzeit im Profil-Menü unter „Datenschutz" eingesehen werden.
+Diese Datenschutzerklärung ist aktuell gültig in der oben genannten Version (Stand: 9. Mai 2026, Version 1.7). Durch die Weiterentwicklung der App oder rechtliche Änderungen kann eine Anpassung erforderlich werden. Die jeweils aktuelle Datenschutzerklärung kann jederzeit im Profil-Menü unter „Datenschutz" eingesehen werden.
+
+**Änderungen in v1.7 gegenüber v1.6 (9. Mai 2026):**
+
+- Neuer Abschnitt 7.1 „Akku-Ausnahme für punktgenaue Step-Vibrationen" — beschreibt die opt-in `REQUEST_IGNORE_BATTERY_OPTIMIZATIONS`-Permission, die ausschließlich beim aktiven Aktivieren der Routine-Vibration angefragt wird (nicht automatisch).
+- Architektur-Hintergrund: Vorher implementierte App den Step-Timer über einen Foreground-Service mit `FOREGROUND_SERVICE_SPECIAL_USE`-Permission. Diese wurde durch den Play-Store-konformen `AlarmManager.setAlarmClock()`-Mechanismus ersetzt — daraus resultiert die Notwendigkeit der opt-in Akku-Ausnahme für punktgenaue Background-Trigger auf restriktiven OEMs (Samsung etc.).
+- Section 7 Titel erweitert von „Push-Benachrichtigungen" auf „Push-Benachrichtigungen und Step-Vibrationen", weil der Mechanismus jetzt auch lokale Step-End-Alerts via `AlarmManager` umfasst.
 
 **Änderungen in v1.6 gegenüber v1.5 (8. Mai 2026 — finaler Pre-Submission-Audit):**
 
