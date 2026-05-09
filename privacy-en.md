@@ -5,7 +5,7 @@ layout: page
 
 # Privacy Policy — Sunly
 
-**Last updated:** May 9, 2026 · **Version:** 1.7
+**Last updated:** May 9, 2026 · **Version:** 1.8
 
 > **Note:** This is the English translation of the German privacy policy. In the event of any conflict or inconsistency, the German version (`Sunly_Datenschutzerklaerung_DE.md`) prevails.
 
@@ -275,19 +275,20 @@ You can disable notifications at any time via the Profile menu ("Notifications")
 
 **Legal basis:** Art. 6(1)(a) GDPR (consent through actively granting the notification permission on first launch).
 
-### 7.1 Battery exemption for punctual step vibrations (`REQUEST_IGNORE_BATTERY_OPTIMIZATIONS`, opt-in)
+### 7.1 Punctual step vibrations (`SCHEDULE_EXACT_ALARM`, special app access)
 
-On Samsung, Xiaomi and Huawei devices, the "Optimized battery" mode can delay `setAlarmClock` broadcast delivery for third-party apps by 30 to 60 seconds. To ensure tanning step vibrations fire on time even when the screen is locked, the app offers an **opt-in battery exemption**.
+Tanning step timers must fire on time to the second, because excessive UV exposure can lead to skin redness or sunburn. To make sure Android serves the system alarm-clock API used by Sunly with guaranteed precise timing — even in standby mode — the app declares the `SCHEDULE_EXACT_ALARM` permission.
 
-**Properties of this exemption:**
+**Properties of this permission:**
 
-- **Opt-in:** It is requested **exclusively** via an Android system Yes/No dialog when you actively enable Routine Vibration in the Profile screen. It is **never** requested automatically — neither at app start, in onboarding, nor in the background.
-- **Reversible:** You can revoke it anytime — either by disabling Routine Vibration in the Profile or directly in the Android system settings (*Settings → Apps → Sunly → Battery → Optimized*).
-- **Functionally narrow:** The exemption only ensures that scheduled tanning step alarms are not delayed by battery optimization. It does **not** allow background tracking, **no** background data processing outside of actively started tanning sessions, and **no** extension of the app's runtime.
+- **Purpose:** Allows the app exclusively to use `AlarmManager.setAlarmClock()` and `setExactAndAllowWhileIdle()` to schedule precisely timed local alarm-clock alarms for the next step end of an active tanning session. Without this permission, Android (from version 12 / API 31) groups alarms with up to 15 minutes of delay — unusable for a tanning timer.
+- **No background data processing:** This permission allows **no** background data processing, **no** tracking, **no** extension of the app's runtime. It applies only to the timing precision of local alarms you started yourself.
+- **When the permission is active:** On Android 12 and 13 (API 31–33), `SCHEDULE_EXACT_ALARM` is automatically granted by the system on first app launch for apps that declare it in the manifest. On Android 14+ (API 34+) it is disabled by default for newly installed apps; you can enable or revoke it at any time under *Settings → Apps → Sunly → Special app access → Alarms & reminders*.
+- **Works without it too:** If the permission is denied, the app uses the system alarm-clock API (`AlarmManager.setAlarmClock()`) as its preferred path — this API is doze-bypass-capable even without a special permission, because it is treated like a classic alarm clock. Foreground vibrations (app open) are punctual either way, since the timing is then driven by JavaScript.
 
-The app continues to work **without** this exemption — foreground vibrations (app open) are punctual either way; only background vibrations may be delayed depending on the manufacturer.
+**Note on the discontinued battery exemption:** Earlier versions of the app (≤ 1.1.31) used the `REQUEST_IGNORE_BATTERY_OPTIMIZATIONS` permission to avoid vibration alarm delays on restrictive OEM modes (Samsung, Xiaomi). This permission was removed in version 1.1.32 and replaced with the combination of `SCHEDULE_EXACT_ALARM` and a 5-second WakeLock in the alarm receiver — functionally equivalent, but more privacy-friendly and without interfering with the system battery strategy.
 
-**Legal basis:** Art. 6(1)(a) GDPR (consent — two-stage: active tap on "I agree, let's go" in the in-app modal + confirmation in the Android system dialog).
+**Legal basis:** Art. 6(1)(a) GDPR (consent) and Art. 6(1)(b) GDPR (contractual necessity — punctual step vibrations are a core function of the app). On Android 13+ no separate user action is required; on Android 12 the special app access is automatically granted by the system at install time and can be revoked at any time.
 
 ---
 
@@ -373,11 +374,17 @@ We implement the following technical and organizational measures:
 
 ## 14. Currency and Modification of this Privacy Policy
 
-This Privacy Policy is currently effective in the version stated above (last updated: May 9, 2026, version 1.7). Further development of the App or legal changes may require modification. The current Privacy Policy can be viewed at any time in the Profile menu under "Privacy".
+This Privacy Policy is currently effective in the version stated above (last updated: May 9, 2026, version 1.8). Further development of the App or legal changes may require modification. The current Privacy Policy can be viewed at any time in the Profile menu under "Privacy".
+
+**Changes in v1.8 vs. v1.7 (May 9, 2026, app version 1.1.32):**
+
+- Section 7.1 substantially rewritten: the opt-in `REQUEST_IGNORE_BATTERY_OPTIMIZATIONS` permission was **fully removed** and replaced with the `SCHEDULE_EXACT_ALARM` permission. The latter is classically a "special app access" and the path explicitly endorsed by the Google Play Store for timer/alarm apps.
+- Additionally, the WakeLock in the alarm receiver was extended from 3 to 5 seconds, so that on aggressively optimized OEMs (Samsung One UI, Xiaomi MIUI), the vibration motor and the step-end notification are reliably processed completely before the system falls back into deep sleep.
+- Architectural rationale: the previous battery exemption was considered a HIGH-risk permission in the Play Console and could have triggered longer review cycles. The new combination of `SCHEDULE_EXACT_ALARM` + extended WakeLock achieves the same outcome — punctual step vibrations even in standby — without interfering with the system battery strategy.
 
 **Changes in v1.7 vs. v1.6 (May 9, 2026):**
 
-- New Section 7.1 "Battery exemption for punctual step vibrations" — describes the opt-in `REQUEST_IGNORE_BATTERY_OPTIMIZATIONS` permission, requested exclusively when the user actively enables Routine Vibration (never automatically).
+- New Section 7.1 "Battery exemption for punctual step vibrations" — describes the opt-in `REQUEST_IGNORE_BATTERY_OPTIMIZATIONS` permission, requested exclusively when the user actively enables Routine Vibration (never automatically). *(Fully replaced by `SCHEDULE_EXACT_ALARM` in v1.8.)*
 - Architectural background: previously the app implemented the step timer via a Foreground Service with `FOREGROUND_SERVICE_SPECIAL_USE` permission. This was replaced with the Play-Store-compliant `AlarmManager.setAlarmClock()` mechanism — which makes the opt-in battery exemption necessary for punctual background triggers on restrictive OEMs (Samsung etc.).
 - Section 7 title expanded from "Push Notifications" to "Push Notifications and Step Vibrations" because the mechanism now also covers local step-end alerts via `AlarmManager`.
 

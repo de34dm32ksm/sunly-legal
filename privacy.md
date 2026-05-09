@@ -5,7 +5,7 @@ layout: page
 
 # Datenschutzerklärung — Sunly
 
-**Stand:** 9. Mai 2026 · **Version:** 1.7
+**Stand:** 9. Mai 2026 · **Version:** 1.8
 
 ---
 
@@ -273,19 +273,20 @@ Du kannst Benachrichtigungen jederzeit über das Profil-Menü („Benachrichtigu
 
 **Rechtsgrundlage:** Art. 6 Abs. 1 lit. a DSGVO (Einwilligung durch aktives Erlauben der Benachrichtigungs-Berechtigung beim ersten Aufruf).
 
-### 7.1 Akku-Ausnahme für punktgenaue Step-Vibrationen (`REQUEST_IGNORE_BATTERY_OPTIMIZATIONS`, opt-in)
+### 7.1 Sekundengenaue Step-Vibrationen (`SCHEDULE_EXACT_ALARM`, Spezial-App-Zugriff)
 
-Auf Samsung-, Xiaomi- und Huawei-Geräten kann der „Optimierte Akku"-Modus die Auslieferung von `setAlarmClock`-Alarmen für Drittanbieter-Apps um 30 bis 60 Sekunden verzögern. Damit Bräunungs-Step-Vibrationen auch bei gesperrtem Bildschirm sekundengenau feuern können, bietet die App eine **opt-in Akku-Ausnahme** an.
+Bräunungs-Step-Timer müssen sekundengenau auslösen, weil zu lange UV-Exposition zu Hautrötungen oder Sonnenbrand führen kann. Damit Android das System-Wecker-API von Sunly mit garantiert exakter Zeitstellung bedient — auch im Standby-Modus — deklariert die App die Berechtigung `SCHEDULE_EXACT_ALARM`.
 
-**Eigenschaften der Ausnahme:**
+**Eigenschaften der Berechtigung:**
 
-- **Opt-in:** Sie wird **ausschließlich** dann über einen Android-System-Yes/No-Dialog angefragt, wenn du im Profil-Screen die Routine-Vibration aktiv einschaltest. Sie wird **niemals automatisch** beim App-Start, im Onboarding oder im Hintergrund angefragt.
-- **Reversibel:** Du kannst sie jederzeit zurücknehmen — entweder durch Ausschalten der Routine-Vibration im Profil oder direkt in den Android-System-Einstellungen (*Einstellungen → Apps → Sunly → Akku → Optimiert*).
-- **Funktional eng begrenzt:** Die Ausnahme erlaubt **ausschließlich**, dass deine selbst gestarteten Bräunungs-Step-Alarme nicht von der Akku-Optimierung verzögert ausgeliefert werden. Sie erlaubt der App **kein** Background-Tracking, **keine** Hintergrund-Datenverarbeitung außerhalb deiner aktiv gestarteten Bräunungs-Sessions, und **keine** Verlängerung der App-Laufzeit.
+- **Zweck:** Erlaubt der App ausschließlich, mit `AlarmManager.setAlarmClock()` und `setExactAndAllowWhileIdle()` sekundengenaue lokale Wecker-Alarme für das jeweils nächste Step-Ende einer aktiven Bräunungs-Session zu planen. Ohne diese Berechtigung würde Android ab Version 12 (API 31) Alarme um bis zu 15 Minuten zeitlich nach hinten gruppieren — für einen Bräunungs-Timer unbrauchbar.
+- **Keine Hintergrund-Datenverarbeitung:** Die Berechtigung erlaubt **keinerlei** Hintergrund-Datenverarbeitung, **kein** Tracking, **kein** Verlängern der App-Laufzeit. Sie wirkt rein zeitlich-präzise auf lokale Alarme, die du selbst gestartet hast.
+- **Wann ist die Berechtigung aktiv:** Auf Android 12 und 13 (API 31–33) wird `SCHEDULE_EXACT_ALARM` für Apps, die sie im Manifest deklarieren, beim ersten App-Start automatisch durch das System gewährt. Auf Android 14+ (API 34+) ist sie bei Neuinstallationen standardmäßig deaktiviert; du kannst sie jederzeit unter *Einstellungen → Apps → Sunly → Spezieller App-Zugriff → Wecker und Erinnerungen* aktivieren oder widerrufen.
+- **Funktioniert auch ohne:** Wird die Berechtigung verweigert, nutzt die App das System-Wecker-API (`AlarmManager.setAlarmClock()`) als bevorzugten Pfad — diese API ist auch ohne Spezial-Berechtigung doze-bypass-fähig, weil sie wie ein klassischer Wecker behandelt wird. Vibrationen im Vordergrund (App geöffnet) sind in jedem Fall punktgenau, da das Timing dann durch JavaScript getrieben wird.
 
-Die App funktioniert auch **ohne** diese Ausnahme weiter — Vibrationen im Vordergrund (App offen) sind in jedem Fall punktgenau, lediglich Background-Vibrationen können dann je nach Hersteller verzögert eintreffen.
+**Hinweis zur entfallenen Akku-Ausnahme:** Frühere Versionen der App (≤ 1.1.31) verwendeten die Berechtigung `REQUEST_IGNORE_BATTERY_OPTIMIZATIONS`, um auf restriktiven OEM-Modi (Samsung, Xiaomi) die Verzögerung von Vibrations-Alarmen zu vermeiden. Diese Berechtigung wurde in Version 1.1.32 entfernt und durch die Kombination aus `SCHEDULE_EXACT_ALARM` und einem 5-Sekunden-WakeLock im Alarm-Receiver ersetzt — funktional gleichwertig, aber datenschutzfreundlicher und ohne Eingriff in die System-Akku-Strategie.
 
-**Rechtsgrundlage:** Art. 6 Abs. 1 lit. a DSGVO (Einwilligung — zweistufig: aktiver Tap auf „Einverstanden, los geht's" im in-app-Modal + Bestätigung im Android-System-Dialog).
+**Rechtsgrundlage:** Art. 6 Abs. 1 lit. a DSGVO (Einwilligung) bzw. Art. 6 Abs. 1 lit. b DSGVO (Vertragserfüllung — die sekundengenaue Step-Vibration ist Kernfunktion der App). Auf Android 13+ ist keine separate Nutzer-Aktion erforderlich; auf Android 12 wird der Spezial-App-Zugriff vom System bei der Installation automatisch gewährt und kann jederzeit widerrufen werden.
 
 ---
 
@@ -371,11 +372,17 @@ Wir treffen folgende technische und organisatorische Maßnahmen:
 
 ## 14. Aktualität und Änderung dieser Datenschutzerklärung
 
-Diese Datenschutzerklärung ist aktuell gültig in der oben genannten Version (Stand: 9. Mai 2026, Version 1.7). Durch die Weiterentwicklung der App oder rechtliche Änderungen kann eine Anpassung erforderlich werden. Die jeweils aktuelle Datenschutzerklärung kann jederzeit im Profil-Menü unter „Datenschutz" eingesehen werden.
+Diese Datenschutzerklärung ist aktuell gültig in der oben genannten Version (Stand: 9. Mai 2026, Version 1.8). Durch die Weiterentwicklung der App oder rechtliche Änderungen kann eine Anpassung erforderlich werden. Die jeweils aktuelle Datenschutzerklärung kann jederzeit im Profil-Menü unter „Datenschutz" eingesehen werden.
+
+**Änderungen in v1.8 gegenüber v1.7 (9. Mai 2026, App-Version 1.1.32):**
+
+- Abschnitt 7.1 grundlegend überarbeitet: Die opt-in `REQUEST_IGNORE_BATTERY_OPTIMIZATIONS`-Permission wurde **vollständig entfernt** und durch die `SCHEDULE_EXACT_ALARM`-Berechtigung ersetzt. Diese ist klassisch ein „Spezieller App-Zugriff" und für Timer-/Wecker-Apps der vom Google Play Store ausdrücklich vorgesehene Weg.
+- Zusätzlich wurde der WakeLock im Alarm-Receiver von 3 auf 5 Sekunden verlängert, sodass auf aggressiv-optimierten OEMs (Samsung One UI, Xiaomi MIUI) der Vibrationsmotor und die Step-End-Notification zuverlässig vollständig verarbeitet werden, bevor das System in den Tiefschlaf zurückfällt.
+- Architektur-Begründung: Die alte Akku-Ausnahme galt im Play Console als HIGH-Risk-Permission und hätte beim Review zu längeren Genehmigungs-Schleifen führen können. Die neue Kombination aus `SCHEDULE_EXACT_ALARM` + verlängerter WakeLock erreicht dasselbe Ergebnis — pünktliche Step-Vibrationen auch im Standby — ohne in die System-Akku-Strategie einzugreifen.
 
 **Änderungen in v1.7 gegenüber v1.6 (9. Mai 2026):**
 
-- Neuer Abschnitt 7.1 „Akku-Ausnahme für punktgenaue Step-Vibrationen" — beschreibt die opt-in `REQUEST_IGNORE_BATTERY_OPTIMIZATIONS`-Permission, die ausschließlich beim aktiven Aktivieren der Routine-Vibration angefragt wird (nicht automatisch).
+- Neuer Abschnitt 7.1 „Akku-Ausnahme für punktgenaue Step-Vibrationen" — beschreibt die opt-in `REQUEST_IGNORE_BATTERY_OPTIMIZATIONS`-Permission, die ausschließlich beim aktiven Aktivieren der Routine-Vibration angefragt wird (nicht automatisch). *(In v1.8 vollständig durch `SCHEDULE_EXACT_ALARM` ersetzt.)*
 - Architektur-Hintergrund: Vorher implementierte App den Step-Timer über einen Foreground-Service mit `FOREGROUND_SERVICE_SPECIAL_USE`-Permission. Diese wurde durch den Play-Store-konformen `AlarmManager.setAlarmClock()`-Mechanismus ersetzt — daraus resultiert die Notwendigkeit der opt-in Akku-Ausnahme für punktgenaue Background-Trigger auf restriktiven OEMs (Samsung etc.).
 - Section 7 Titel erweitert von „Push-Benachrichtigungen" auf „Push-Benachrichtigungen und Step-Vibrationen", weil der Mechanismus jetzt auch lokale Step-End-Alerts via `AlarmManager` umfasst.
 
