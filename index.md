@@ -15,11 +15,13 @@ Willkommen auf der rechtlichen Übersichts-Seite der App **Sunly** — eine priv
 
 - 📄 [Datenschutzerklärung](./privacy)
 - 📄 [Nutzungsbedingungen](./terms)
+- 📄 [Impressum](./imprint)
 
 ### In English
 
 - 📄 [Privacy Policy](./privacy-en)
 - 📄 [Terms of Service](./terms-en)
+- 📄 [Imprint / Provider Information](./imprint-en)
 
 ---
 
@@ -31,4 +33,4 @@ Willkommen auf der rechtlichen Übersichts-Seite der App **Sunly** — eine priv
 ---
 
 *Diese Seite wird statisch aus den Markdown-Quellen im Repository generiert.
-Stand der Dokumente: 8. Mai 2026*
+Stand der Dokumente: 19. Mai 2026*
