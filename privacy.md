@@ -5,7 +5,7 @@ layout: page
 
 # Datenschutzerklärung — Sunly
 
-**Stand:** 9. Mai 2026 · **Version:** 1.8
+**Stand:** 2. Juni 2026 · **Version:** 1.9
 
 ---
 
@@ -26,7 +26,7 @@ Sunly wird privat und nicht-kommerziell betrieben. Es gibt keinen gesetzlich vor
 
 ## 2. Geltungsbereich
 
-Diese Datenschutzerklärung gilt für die mobile Anwendung **Sunly** (im Folgenden „App") für Android, veröffentlicht unter der Application-ID `com.mariusbecker.sunly`. Sie informiert die Nutzer (im Folgenden „du") über Art, Umfang und Zweck der Verarbeitung personenbezogener Daten.
+Diese Datenschutzerklärung gilt für die mobile Anwendung **Sunly** (im Folgenden „App") für **Android und iOS**, veröffentlicht unter der App-/Bundle-ID `com.mariusbecker.sunly`. Sie informiert die Nutzer (im Folgenden „du") über Art, Umfang und Zweck der Verarbeitung personenbezogener Daten. Auf iOS verwendet die App das `UNUserNotificationCenter` für lokale Benachrichtigungen — die in Abschnitt 7.1 beschriebene `SCHEDULE_EXACT_ALARM`-Berechtigung ist Android-spezifisch und auf iOS nicht anwendbar.
 
 Die App dient ausschließlich Wellness- und Lifestyle-Zwecken (UV-Index-Tracking, Bräunungsplanung, Vitamin-D-Schätzung). Sie ist **kein Medizinprodukt** im Sinne der Verordnung (EU) 2017/745 (MDR) und ersetzt keinerlei ärztliche Beratung, Diagnose oder Behandlung.
 

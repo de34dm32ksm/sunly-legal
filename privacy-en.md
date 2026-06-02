@@ -5,7 +5,7 @@ layout: page
 
 # Privacy Policy — Sunly
 
-**Last updated:** May 9, 2026 · **Version:** 1.8
+**Last updated:** June 2, 2026 · **Version:** 1.9
 
 > **Note:** This is the English translation of the German privacy policy. In the event of any conflict or inconsistency, the German version (`Sunly_Datenschutzerklaerung_DE.md`) prevails.
 
@@ -28,7 +28,7 @@ Sunly is operated privately and on a non-commercial basis. There is no statutory
 
 ## 2. Scope
 
-This Privacy Policy applies to the **Sunly** mobile application (hereinafter "the App") for Android, published under the application ID `com.mariusbecker.sunly`. It informs users (hereinafter "you") about the nature, scope and purpose of the processing of personal data.
+This Privacy Policy applies to the **Sunly** mobile application (hereinafter "the App") for **Android and iOS**, published under the application/bundle ID `com.mariusbecker.sunly`. It informs users (hereinafter "you") about the nature, scope and purpose of the processing of personal data. On iOS, the App uses the `UNUserNotificationCenter` API for local notifications — the `SCHEDULE_EXACT_ALARM` permission described in Section 7.1 is Android-specific and does not apply on iOS.
 
 The App is exclusively for wellness and lifestyle purposes (UV index tracking, tanning planning, vitamin D estimation). It is **not a medical device** within the meaning of Regulation (EU) 2017/745 (MDR) and does not replace any medical advice, diagnosis or treatment.
 
