@@ -5,7 +5,7 @@ layout: page
 
 # Privacy Policy — Sunly
 
-**Last updated:** June 2, 2026 · **Version:** 1.9
+**Last updated:** June 2, 2026 · **Version:** 1.10
 
 > **Note:** This is the English translation of the German privacy policy. In the event of any conflict or inconsistency, the German version (`Sunly_Datenschutzerklaerung_DE.md`) prevails.
 
@@ -222,6 +222,42 @@ In both cases, **no user identifier** is transmitted — requests cannot be attr
 **Legal basis:** Art. 6(1)(f) GDPR (legitimate interest in consistent, legible typography).
 
 **Planned mitigation:** Fonts will be bundled locally in the app in a future version, eliminating this data flow entirely.
+
+### 4.6a Sunly's own funnel analytics (self-hosted, EU)
+
+**Provider:** Marius Alexander Becker, hosted on Cloudflare Workers (EU edge) under `sunly-analytics.beckermariusalexander.workers.dev`. Same infrastructure as the AI scan endpoint (Section 4.1) — no additional third-party.
+
+**Purpose:** Aggregate funnel analysis — understand where users drop off during onboarding, which features they use, and average session length. Used solely to improve the product.
+
+**What is transmitted — and only this:**
+
+- Anonymous event name (e.g. `ob_goal_select`, `routine_complete`)
+- Optional event properties (e.g. selected tan goal as index 0–4), JSON, max. 1 KB
+- Timestamp
+- **Anonymous installation UUID** — randomly generated on first app launch, stored locally in `localStorage`. **NOT** the IDFA, **NOT** the IDFV, **NOT** linked to Apple ID, e-mail, or any other user identifier.
+- **Anonymous session UUID** — randomly generated on each app launch, no user link.
+- Locale (`de` / `en`), platform (`ios`), app version
+
+**What is NOT transmitted:**
+
+- No personal data
+- No IP addresses (stripped at the Cloudflare edge)
+- No location coordinates
+- No photo content or photo metadata
+- No profile data (skin type, eye color, gender, …)
+- No advertising identifiers (IDFA / IDFV)
+- No linkage with third-party data
+- No cross-app tracking
+
+**Processing region:** Cloudflare EU edge → Cloudflare D1 (EU). The data does not leave the European Union.
+
+**Retention:** 90 days, after which raw events are automatically deleted via a cron job. Data is not aggregated into other databases.
+
+**Legal basis:** Art. 6 (1) (f) GDPR (legitimate interest in product improvement based on aggregate, non-identifying usage statistics).
+
+**Withdrawal:** You can opt out at any time via *Profile → Anonymous analytics → Off*. After the toggle, no new events are sent. Already-transmitted anonymous events cannot be deleted individually due to the absence of a user identifier, but are automatically removed after 90 days.
+
+**Apple App Privacy Label:** The data collected here is declared under "Product Interaction" + "Other Diagnostic Data" (Analytics, **Not Linked to User**, **No Tracking** per Apple's definition).
 
 ### 4.6 OpenStreetMap Foundation (Reverse Geocoding)
 

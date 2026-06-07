@@ -5,7 +5,7 @@ layout: page
 
 # Datenschutzerklärung — Sunly
 
-**Stand:** 2. Juni 2026 · **Version:** 1.9
+**Stand:** 2. Juni 2026 · **Version:** 1.10
 
 ---
 
@@ -220,6 +220,42 @@ Es wird in beiden Fällen **keine User-Kennung** übertragen — die Anfragen k�
 **Rechtsgrundlage:** Art. 6 Abs. 1 lit. f DSGVO (berechtigtes Interesse an einheitlicher, lesbarer Typografie).
 
 **Aktuell geplante Mitigation:** Schriftarten werden in einer kommenden Version lokal in das App-Bundle integriert, sodass dieser Datenfluss vollständig entfällt.
+
+### 4.6a Sunly-eigene Funnel-Analytik (selbst-gehostet, EU)
+
+**Anbieter:** Marius Alexander Becker, gehostet auf Cloudflare Workers (EU-Edge) unter `sunly-analytics.beckermariusalexander.workers.dev`. Identische Infrastruktur wie der KI-Scan-Endpunkt (Abschnitt 4.1), kein zusätzlicher Drittanbieter.
+
+**Verarbeitungszweck:** Aggregierte Funnel-Analyse — verstehen, an welchen Stellen des Onboardings Nutzer:innen abbrechen, welche Features genutzt werden und wie lange App-Sessions im Durchschnitt dauern. Wird ausschließlich zur Produkt-Verbesserung verwendet.
+
+**Übermittelte Daten — und nur diese:**
+
+- Anonymer Event-Name (z. B. `ob_goal_select`, `routine_complete`)
+- Optionale Event-Properties (z. B. ausgewähltes Bräunungs-Ziel als Index 0–4), JSON, maximal 1 KB
+- Zeitstempel
+- **Anonyme Installations-UUID** — zufällig generiert beim ersten App-Start, lokal in `localStorage` gespeichert. **NICHT** die IDFA, **NICHT** die IDFV, **NICHT** mit Apple-ID, E-Mail oder anderen User-Identifikatoren verknüpft.
+- **Anonyme Session-UUID** — zufällig generiert bei jedem App-Open, kein User-Bezug.
+- Sprache (`de` / `en`), Plattform (`ios`), App-Version
+
+**Was NICHT übermittelt wird:**
+
+- Keine personenbezogenen Daten
+- Keine IP-Adressen (werden am Cloudflare-Edge gestrippt)
+- Keine Standort-Koordinaten
+- Keine Foto-Inhalte oder Foto-Metadaten
+- Keine Profildaten (Hauttyp, Augenfarbe, Geschlecht, …)
+- Keine Werbe-IDs (IDFA / IDFV)
+- Keine Verknüpfung mit Drittanbieter-Daten
+- Kein Cross-App-Tracking
+
+**Verarbeitungsregion:** Cloudflare EU-Edge → Cloudflare D1 (EU). Die Daten verlassen die Europäische Union nicht.
+
+**Speicherdauer:** 90 Tage, danach automatische Löschung der Roh-Events über einen Cron-Job. Daten werden nicht aggregiert in andere Datenbanken kopiert.
+
+**Rechtsgrundlage:** Art. 6 Abs. 1 lit. f DSGVO (berechtigtes Interesse an der Verbesserung des Produkts auf Basis aggregierter, nicht-identifizierender Nutzungsstatistiken).
+
+**Widerruf:** Du kannst der Erfassung jederzeit über *Profil → Anonyme Analytik → Aus* widersprechen. Ab dem Toggle werden keine neuen Events mehr gesendet. Bereits übermittelte anonyme Events können mangels User-Bezug nicht punktuell gelöscht werden, werden aber nach 90 Tagen automatisch entfernt.
+
+**Apple App Privacy Label:** Die hier erfassten Daten sind unter „Product Interaction" + „Other Diagnostic Data" deklariert (Analyse, **nicht mit Benutzer:in verknüpft**, **kein Tracking** im Sinne der Apple-Definition).
 
 ### 4.6 OpenStreetMap Foundation (Reverse-Geocoding)
 
