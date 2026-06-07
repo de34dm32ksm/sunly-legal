@@ -5,7 +5,7 @@ layout: page
 
 # Privacy Policy — Sunly
 
-**Last updated:** June 2, 2026 · **Version:** 1.11
+**Last updated:** June 2, 2026 · **Version:** 1.12
 
 > **Note:** This is the English translation of the German privacy policy. In the event of any conflict or inconsistency, the German version (`Sunly_Datenschutzerklaerung_DE.md`) prevails.
 
@@ -239,25 +239,63 @@ In both cases, **no user identifier** is transmitted — requests cannot be attr
 - `persistence: 'localStorage'` — no third-party cookies
 - `person_profiles: 'identified_only'` — Sunly **never** calls `identify()`, so PostHog does **not** create person profiles, only anonymous event counts
 
-**What is transmitted — and only this:**
+**What is transmitted — full categories:**
 
-- Anonymous event name (e.g. `ob_goal_select`, `routine_complete`)
-- Optional event properties (e.g. selected tan goal as index 0–4)
-- Timestamp
-- **Anonymous PostHog distinct-ID** — randomly generated on first app launch, stored locally in `localStorage`. **NOT** the IDFA, **NOT** the IDFV, **NOT** linked to Apple ID, e-mail, or any other user identifier.
-- Locale (`de` / `en`), platform (`ios`), app version
+Each event consists of:
+
+- **Event name** (max. 64 characters, snake_case)
+- **Optional event properties** (anonymous numbers, indices, booleans, short strings — see categories below, max. 1 KB per event)
+- **Timestamp**
+- **Anonymous PostHog distinct-ID** — randomly generated on first app launch in `localStorage`. **NOT** the IDFA, **NOT** the IDFV, **NOT** linked to Apple ID, e-mail, or any other user identifier.
+- **Standard properties:** locale (`de` / `en`), platform (`ios`), app version
+
+**Event categories (as of v1.1.34):**
+
+1. **Session lifecycle**
+   `session_start`, `session_resume`, `session_end` (with `duration_sec`).
+
+2. **Onboarding navigation**
+   `ob_<step>_view` for each of the 19 onboarding steps (Welcome → Consent → Goals → skin-type questions → Plan → Dashboard), `ob_dashboard_arrive` as the completion conversion.
+
+3. **Onboarding selections (anonymous indices 0–6)**
+   `ob_goal_toggle`, `ob_tan_goal_select`, `ob_hair_select`, `ob_skin_select`, `ob_sun_select`, `ob_freckles_select`, `ob_frval_select`, `ob_gender_select`, `ob_scan_skip` (only the list index of the user's choice — never personally identifying values).
+
+4. **AI photo scan workflow**
+   `ai_scan_start`, `ai_scan_retry`, `ai_scan_photo_taken`, `ai_scan_success`, `ai_scan_error`.
+   Properties: `duration_ms` (inference duration), `error_type` (`timeout` / `network` / `ai_safety` / `permission_denied` / `camera_unavailable`), **the Fitzpatrick skin-type number (1–6) estimated by the AI model** and the `evenness` result. **The photo itself is NOT transmitted to PostHog** — only the numerical analysis result that you see in the app yourself.
+
+5. **Routine workflow**
+   `routine_start` (with `total_steps`, `intensity`, `min_per_side`), `routine_step_complete` (with `step_index`, `step_type`, `planned_sec`, `actual_sec`, `how`), `routine_step_skip`, `routine_abort_intent`, `routine_abort_confirmed` (with `progress_pct`), `routine_complete`.
+
+6. **Permission outcomes**
+   `permission_camera_grant` / `permission_camera_deny`, `permission_location_grant` / `permission_location_deny` (with boolean `precise`), `permission_notifications_grant` / `permission_notifications_deny`.
+
+7. **Settings changes** (each with `from` / `to` values)
+   `settings_language_change`, `settings_intensity_change`, `settings_cooloff_change`, `settings_tan_goal_change`, `settings_session_adj_change`, `settings_routine_vibration_change`, `settings_skin_type_manual_change`, `settings_analytics_change`, `settings_reset_data_confirmed` (with anonymous counter snapshots like `had_sessions`, `session_count`, `scan_count`, `streak`).
+
+8. **Activation milestones** (each fires at most once per installation)
+   `activation_first_routine_complete`, `activation_first_scan_complete` — both with `days_since_install` (days since first app launch).
+
+9. **Engagement milestones**
+   `streak_3_days`, `streak_7_days`, `streak_14_days`, `streak_30_days`, `streak_60_days`, `streak_90_days`, `streak_180_days`, `streak_365_days` — each fires once when the respective threshold is reached.
+
+10. **Other**
+    `tab_view` (tab switch with `from`/`to`), `uv_detail_open`, `share_card_open`.
 
 **What is NOT transmitted:**
 
-- No personal data
+- No directly identifying personal data (name, e-mail, phone, address, date of birth)
 - No location coordinates
-- No photo content or photo metadata
-- No profile data (skin type, eye color, gender, …)
+- No photo content and no photo metadata (no image hash, no image format, no image size)
+- No first or last name, no date of birth, no account identifier
 - No advertising identifiers (IDFA / IDFV)
-- No automatic capture of clicks, form inputs, scrolling or mouse movement
-- No session replay
+- No IP addresses (stripped at the Cloudflare edge; PostHog with `disable_session_recording:true` does not collect them)
+- No automatic capture of clicks, form inputs, scrolling or mouse movement (`autocapture: false`)
+- No session replay (`disable_session_recording: true`)
+- No cookies (`persistence: 'localStorage'`)
+- No linkage with third-party data, no data brokers
 - No cross-app tracking
-- No linkage with third-party data
+- No linkage to your Apple account, e-mail, or any other external identities
 
 **Processing region:** EU (Frankfurt am Main, Google Cloud data centre, PostHog EU cloud). The data does not leave the European Union.
 
