@@ -5,7 +5,7 @@ layout: page
 
 # Datenschutzerklärung — Sunly
 
-**Stand:** 2. Juni 2026 · **Version:** 1.10
+**Stand:** 2. Juni 2026 · **Version:** 1.11
 
 ---
 
@@ -221,41 +221,53 @@ Es wird in beiden Fällen **keine User-Kennung** übertragen — die Anfragen k�
 
 **Aktuell geplante Mitigation:** Schriftarten werden in einer kommenden Version lokal in das App-Bundle integriert, sodass dieser Datenfluss vollständig entfällt.
 
-### 4.6a Sunly-eigene Funnel-Analytik (selbst-gehostet, EU)
+### 4.6a PostHog (Funnel-Analytik · EU-Hosting · Frankfurt)
 
-**Anbieter:** Marius Alexander Becker, gehostet auf Cloudflare Workers (EU-Edge) unter `sunly-analytics.beckermariusalexander.workers.dev`. Identische Infrastruktur wie der KI-Scan-Endpunkt (Abschnitt 4.1), kein zusätzlicher Drittanbieter.
+**Anbieter:** PostHog Inc., 2261 Market Street #4008, San Francisco, CA 94114, USA. Für EU-Kunden wird das Hosting auf der EU-Cloud betrieben: `eu.i.posthog.com` (Google Cloud Frankfurt). Standard Contractual Clauses (EU C2P, Durchführungsbeschluss 2021/914 Modul 2) gemäß PostHog-DPA in Kraft.
 
-**Verarbeitungszweck:** Aggregierte Funnel-Analyse — verstehen, an welchen Stellen des Onboardings Nutzer:innen abbrechen, welche Features genutzt werden und wie lange App-Sessions im Durchschnitt dauern. Wird ausschließlich zur Produkt-Verbesserung verwendet.
+**Verarbeitungszweck:** Aggregierte Funnel-Analyse — verstehen, an welchen Stellen des Onboardings Nutzer:innen abbrechen, welche Features genutzt werden und wie lange App-Sessions im Durchschnitt dauern. Wird ausschließlich zur Verbesserung der App verwendet — **nicht** zu Werbung, Marketing oder Profilierung.
+
+**Konfiguration (Privacy-First):**
+
+- `autocapture: false` — keine automatischen Klick-/Eingabe-Events
+- `capture_pageview: false` — kein automatisches Page-Tracking
+- `capture_pageleave: false`
+- `disable_session_recording: true` — kein Session-Replay
+- `capture_performance: false` — keine Web-Vitals-Erfassung
+- `persistence: 'localStorage'` — keine Third-Party-Cookies
+- `person_profiles: 'identified_only'` — Sunly ruft `identify()` **nie** auf → es werden bei PostHog **keine** Personen-Objekte angelegt, nur anonyme Event-Aggregate gezählt
 
 **Übermittelte Daten — und nur diese:**
 
 - Anonymer Event-Name (z. B. `ob_goal_select`, `routine_complete`)
-- Optionale Event-Properties (z. B. ausgewähltes Bräunungs-Ziel als Index 0–4), JSON, maximal 1 KB
+- Optionale Event-Properties (z. B. ausgewähltes Bräunungs-Ziel als Index 0–4)
 - Zeitstempel
-- **Anonyme Installations-UUID** — zufällig generiert beim ersten App-Start, lokal in `localStorage` gespeichert. **NICHT** die IDFA, **NICHT** die IDFV, **NICHT** mit Apple-ID, E-Mail oder anderen User-Identifikatoren verknüpft.
-- **Anonyme Session-UUID** — zufällig generiert bei jedem App-Open, kein User-Bezug.
+- **Anonyme Distinct-ID** von PostHog — zufällig generiert beim ersten App-Start, lokal in `localStorage` gespeichert. **NICHT** die IDFA, **NICHT** die IDFV, **NICHT** mit Apple-ID, E-Mail oder anderen User-Identifikatoren verknüpft.
 - Sprache (`de` / `en`), Plattform (`ios`), App-Version
 
 **Was NICHT übermittelt wird:**
 
 - Keine personenbezogenen Daten
-- Keine IP-Adressen (werden am Cloudflare-Edge gestrippt)
 - Keine Standort-Koordinaten
 - Keine Foto-Inhalte oder Foto-Metadaten
 - Keine Profildaten (Hauttyp, Augenfarbe, Geschlecht, …)
 - Keine Werbe-IDs (IDFA / IDFV)
-- Keine Verknüpfung mit Drittanbieter-Daten
+- Keine automatische Erfassung von Klicks, Formular-Eingaben, Scrolling oder Mausbewegungen
+- Kein Session-Replay
 - Kein Cross-App-Tracking
+- Keine Verknüpfung mit Drittanbieter-Daten
 
-**Verarbeitungsregion:** Cloudflare EU-Edge → Cloudflare D1 (EU). Die Daten verlassen die Europäische Union nicht.
+**Verarbeitungsregion:** EU (Frankfurt am Main, Google-Cloud-Rechenzentrum, PostHog EU-Cloud). Die Daten verlassen die Europäische Union nicht.
 
-**Speicherdauer:** 90 Tage, danach automatische Löschung der Roh-Events über einen Cron-Job. Daten werden nicht aggregiert in andere Datenbanken kopiert.
+**Speicherdauer:** Gemäß PostHog-Cloud-Standard-Retention für den genutzten Tarif. Bei der Free/Hobby-Stufe typischerweise 1 Jahr für Events. Aggregierte Statistiken können länger erhalten bleiben.
 
 **Rechtsgrundlage:** Art. 6 Abs. 1 lit. f DSGVO (berechtigtes Interesse an der Verbesserung des Produkts auf Basis aggregierter, nicht-identifizierender Nutzungsstatistiken).
 
-**Widerruf:** Du kannst der Erfassung jederzeit über *Profil → Anonyme Analytik → Aus* widersprechen. Ab dem Toggle werden keine neuen Events mehr gesendet. Bereits übermittelte anonyme Events können mangels User-Bezug nicht punktuell gelöscht werden, werden aber nach 90 Tagen automatisch entfernt.
+**Widerruf:** Du kannst der Erfassung jederzeit über *Profil → Anonyme Analytik → Aus* widersprechen. Ab dem Toggle wird der PostHog-Loader bei nachfolgenden App-Starts **nicht mehr injiziert** und es geht keine einzige Anfrage mehr an PostHog. Innerhalb der laufenden Session ruft Sunly zusätzlich `posthog.opt_out_capturing()` auf, das sofort alle weiteren Übertragungen unterdrückt.
 
-**Apple App Privacy Label:** Die hier erfassten Daten sind unter „Product Interaction" + „Other Diagnostic Data" deklariert (Analyse, **nicht mit Benutzer:in verknüpft**, **kein Tracking** im Sinne der Apple-Definition).
+**Vertragsdokumente:** PostHog Data Processing Addendum, EU Standard Contractual Clauses, Sub-Processor-Liste — abrufbar unter [posthog.com/handbook/company/security](https://posthog.com/handbook/company/security).
+
+**Apple App Privacy Label:** Die hier erfassten Daten sind unter „Product Interaction" + „Other Diagnostic Data" deklariert (Analyse, **nicht mit Benutzer:in verknüpft**, **kein Tracking** im Sinne der Apple-Definition — kein Cross-App-Linkage, keine Datenbroker-Weitergabe, keine Werbe-Messung).
 
 ### 4.6 OpenStreetMap Foundation (Reverse-Geocoding)
 
