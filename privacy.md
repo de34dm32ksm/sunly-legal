@@ -5,7 +5,7 @@ layout: page
 
 # Datenschutzerklärung — Sunly
 
-**Stand:** 2. Juni 2026 · **Version:** 1.12
+**Stand:** 8. Juni 2026 · **Version:** 1.13
 
 ---
 
@@ -229,10 +229,10 @@ Es wird in beiden Fällen **keine User-Kennung** übertragen — die Anfragen k�
 
 **Konfiguration (Privacy-First):**
 
-- `autocapture: false` — keine automatischen Klick-/Eingabe-Events
+- `autocapture: true` — automatische Interaktions-Events: *welche* Bedien-Elemente angetippt werden (Element-Typ/Position), **keine** Eingabe-Inhalte
 - `capture_pageview: false` — kein automatisches Page-Tracking
 - `capture_pageleave: false`
-- `disable_session_recording: true` — kein Session-Replay
+- `disable_session_recording: false` + `session_recording.maskAllInputs: true` — anonymisiertes Session-Replay mit **maskierten** Eingaben (Details unten)
 - `capture_performance: false` — keine Web-Vitals-Erfassung
 - `persistence: 'localStorage'` — keine Third-Party-Cookies
 - `person_profiles: 'identified_only'` — Sunly ruft `identify()` **nie** auf → es werden bei PostHog **keine** Personen-Objekte angelegt, nur anonyme Event-Aggregate gezählt
@@ -280,6 +280,16 @@ Jedes Event besteht aus:
 10. **Sonstiges**
     `tab_view` (Tab-Wechsel mit `from`/`to`), `uv_detail_open`, `share_card_open`.
 
+**Automatische Erfassung (Autocapture):** Zusätzlich zu den oben gelisteten Events erfasst PostHog automatisch **Interaktions-Ereignisse** — d. h. *welche* Bedien-Elemente (Buttons, Links, Tabs) angetippt werden (`autocapture: true`). Erfasst werden nur Element-Typ und Position in der Oberfläche, **keine** eingegebenen Texte.
+
+**Sitzungs-Aufzeichnung (Session Replay):** PostHog zeichnet anonymisierte **Sitzungs-Wiedergaben** auf — eine Rekonstruktion der Bildschirm-Interaktionen (Taps, Navigation, Scrollen), damit nachvollziehbar ist, an welchen Stellen Nutzer:innen in der App hängenbleiben. Dabei gilt:
+
+- **Alle Texteingaben werden maskiert** (`maskAllInputs: true`) — eingegebene Inhalte sind in der Aufzeichnung unkenntlich.
+- **Keine Fotos** und keine Scan-Bilder sind Teil der Aufzeichnung.
+- Hosting ausschließlich in der **EU** (PostHog EU-Cloud, Frankfurt am Main).
+- Die Aufzeichnung ist nur an die zufällige, anonyme Distinct-ID gebunden — **nicht** an deine Identität, deinen Apple-Account oder deine E-Mail.
+- Du kannst sie zusammen mit der übrigen Analytik jederzeit über *Profil → Anonyme Analytik → Aus* deaktivieren.
+
 **Was NICHT übermittelt wird:**
 
 - Keine direkten personenbezogenen Daten (Name, E-Mail, Telefon, Adresse, Geburtsdatum)
@@ -287,9 +297,8 @@ Jedes Event besteht aus:
 - Keine Foto-Inhalte und keine Foto-Metadaten (kein Image-Hash, kein Image-Format, keine Image-Größe)
 - Kein Vor- oder Familienname, kein Geburtsdatum, kein Konto-Identifier
 - Keine Werbe-IDs (IDFA / IDFV)
-- Keine IP-Adresse (am Cloudflare-Edge gestrippt, PostHog mit `disable_session_recording:true` erhebt sie nicht)
-- Keine automatische Erfassung von Klicks, Formular-Eingaben, Scrolling oder Mausbewegungen (`autocapture: false`)
-- Kein Session-Replay (`disable_session_recording: true`)
+- Die IP-Adresse wird von PostHog allenfalls **transient** zur groben Länder-Zuordnung (Geo-IP) und zur Spam-Abwehr verarbeitet — **nicht** zur Identifikation genutzt und **nicht** mit einem Personen-Profil verknüpft
+- Keine eingegebenen Texte oder Formular-Inhalte (in der Sitzungs-Aufzeichnung via `maskAllInputs: true` maskiert)
 - Keine Cookies (`persistence: 'localStorage'`)
 - Keine Verknüpfung mit Drittanbieter-Daten, kein Datenbroker
 - Kein Cross-App-Tracking
@@ -458,7 +467,13 @@ Wir treffen folgende technische und organisatorische Maßnahmen:
 
 ## 14. Aktualität und Änderung dieser Datenschutzerklärung
 
-Diese Datenschutzerklärung ist aktuell gültig in der oben genannten Version (Stand: 9. Mai 2026, Version 1.8). Durch die Weiterentwicklung der App oder rechtliche Änderungen kann eine Anpassung erforderlich werden. Die jeweils aktuelle Datenschutzerklärung kann jederzeit im Profil-Menü unter „Datenschutz" eingesehen werden.
+Diese Datenschutzerklärung ist aktuell gültig in der oben genannten Version (Stand: 8. Juni 2026, Version 1.13). Durch die Weiterentwicklung der App oder rechtliche Änderungen kann eine Anpassung erforderlich werden. Die jeweils aktuelle Datenschutzerklärung kann jederzeit im Profil-Menü unter „Datenschutz" eingesehen werden.
+
+**Änderungen in v1.13 gegenüber v1.12 (8. Juni 2026, App-Version 1.1.42):**
+
+- Abschnitt 4.6a (PostHog) korrigiert und erweitert: **Autocapture** (`autocapture: true`) und **Session-Replay** (`disable_session_recording: false`) sind nun aktiv und werden offengelegt — inklusive **Maskierung aller Texteingaben** (`maskAllInputs: true`), EU-Hosting und Bindung ausschließlich an die anonyme Distinct-ID. Die früheren Angaben („`autocapture: false`", „kein Session-Replay") waren nach Aktivierung dieser Funktionen nicht mehr zutreffend und wurden ersetzt.
+- IP-Adressen-Passus präzisiert: PostHog verarbeitet die IP allenfalls transient zur groben Länder-Zuordnung (Geo-IP) und zur Spam-Abwehr, nicht zur Identifikation und nicht profil-verknüpft.
+- Der in der Erklärung genannte Opt-out *Profil → Anonyme Analytik → Aus* wurde in der App tatsächlich implementiert (Toggle setzt das Opt-out-Flag und ruft `posthog.opt_out_capturing()`).
 
 **Änderungen in v1.8 gegenüber v1.7 (9. Mai 2026, App-Version 1.1.32):**
 

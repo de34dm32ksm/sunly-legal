@@ -5,7 +5,7 @@ layout: page
 
 # Privacy Policy — Sunly
 
-**Last updated:** June 2, 2026 · **Version:** 1.12
+**Last updated:** June 8, 2026 · **Version:** 1.13
 
 > **Note:** This is the English translation of the German privacy policy. In the event of any conflict or inconsistency, the German version (`Sunly_Datenschutzerklaerung_DE.md`) prevails.
 
@@ -231,10 +231,10 @@ In both cases, **no user identifier** is transmitted — requests cannot be attr
 
 **Privacy-first configuration:**
 
-- `autocapture: false` — no automatic click/input events
+- `autocapture: true` — automatic interaction events: *which* UI elements are tapped (element type/position), **no** input content
 - `capture_pageview: false` — no automatic page tracking
 - `capture_pageleave: false`
-- `disable_session_recording: true` — no session replay
+- `disable_session_recording: false` + `session_recording.maskAllInputs: true` — anonymised session replay with **masked** inputs (details below)
 - `capture_performance: false` — no web-vitals collection
 - `persistence: 'localStorage'` — no third-party cookies
 - `person_profiles: 'identified_only'` — Sunly **never** calls `identify()`, so PostHog does **not** create person profiles, only anonymous event counts
@@ -282,6 +282,16 @@ Each event consists of:
 10. **Other**
     `tab_view` (tab switch with `from`/`to`), `uv_detail_open`, `share_card_open`.
 
+**Automatic capture (autocapture):** In addition to the events listed above, PostHog automatically records **interaction events** — i.e. *which* UI elements (buttons, links, tabs) are tapped (`autocapture: true`). Only the element type and its position in the interface are recorded, **not** any entered text.
+
+**Session recording (session replay):** PostHog records anonymised **session replays** — a reconstruction of on-screen interactions (taps, navigation, scrolling) so we can understand where users get stuck in the app. The following applies:
+
+- **All text inputs are masked** (`maskAllInputs: true`) — entered content is unreadable in the recording.
+- **No photos** and no scan images are part of the recording.
+- Hosting exclusively in the **EU** (PostHog EU cloud, Frankfurt am Main).
+- The recording is tied only to the random, anonymous distinct ID — **not** to your identity, Apple account or e-mail.
+- You can disable it together with the rest of analytics anytime via *Profile → Anonymous analytics → Off*.
+
 **What is NOT transmitted:**
 
 - No directly identifying personal data (name, e-mail, phone, address, date of birth)
@@ -289,9 +299,8 @@ Each event consists of:
 - No photo content and no photo metadata (no image hash, no image format, no image size)
 - No first or last name, no date of birth, no account identifier
 - No advertising identifiers (IDFA / IDFV)
-- No IP addresses (stripped at the Cloudflare edge; PostHog with `disable_session_recording:true` does not collect them)
-- No automatic capture of clicks, form inputs, scrolling or mouse movement (`autocapture: false`)
-- No session replay (`disable_session_recording: true`)
+- The IP address is at most processed **transiently** by PostHog for coarse country attribution (geo-IP) and spam prevention — **not** used for identification and **not** linked to a person profile
+- No entered text or form content (masked in the session recording via `maskAllInputs: true`)
 - No cookies (`persistence: 'localStorage'`)
 - No linkage with third-party data, no data brokers
 - No cross-app tracking
@@ -460,7 +469,13 @@ We implement the following technical and organizational measures:
 
 ## 14. Currency and Modification of this Privacy Policy
 
-This Privacy Policy is currently effective in the version stated above (last updated: May 9, 2026, version 1.8). Further development of the App or legal changes may require modification. The current Privacy Policy can be viewed at any time in the Profile menu under "Privacy".
+This Privacy Policy is currently effective in the version stated above (last updated: June 8, 2026, version 1.13). Further development of the App or legal changes may require modification. The current Privacy Policy can be viewed at any time in the Profile menu under "Privacy".
+
+**Changes in v1.13 vs. v1.12 (June 8, 2026, app version 1.1.42):**
+
+- Section 4.6a (PostHog) corrected and expanded: **autocapture** (`autocapture: true`) and **session replay** (`disable_session_recording: false`) are now active and disclosed — including **masking of all text inputs** (`maskAllInputs: true`), EU hosting and binding only to the anonymous distinct ID. The previous statements ("`autocapture: false`", "no session replay") were no longer accurate after these features were enabled and have been replaced.
+- IP-address wording clarified: PostHog processes the IP at most transiently for coarse country attribution (geo-IP) and spam prevention, not for identification and not linked to a profile.
+- The opt-out *Profile → Anonymous analytics → Off* mentioned in this policy has actually been implemented in the app (toggle sets the opt-out flag and calls `posthog.opt_out_capturing()`).
 
 **Changes in v1.8 vs. v1.7 (May 9, 2026, app version 1.1.32):**
 
